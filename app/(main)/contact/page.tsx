@@ -18,13 +18,15 @@ export async function generateMetadata(): Promise<Metadata> {
   const siteUrl = settings.siteUrl || siteConfig.seo.url;
 
   return buildMetadata({
-    title: contactData?.metaTitle ?? `Contact Us | ${siteName}`,
+    title: contactData?.seo?.title ?? `Contact Us | ${siteName}`,
     description:
-      contactData?.metaDescription ?? contactData?.heroSubtitle ?? `Get in touch with ${siteName} for a free security system estimate.`,
+      contactData?.seo?.description ?? contactData?.heroSubtitle ?? `Get in touch with ${siteName} for a free security system estimate.`,
     path: "/contact",
     siteUrl,
     siteName,
-    ogImage: contactData?.ogImage,
+    ogImage: contactData?.seo?.ogImage,
+    canonical: contactData?.seo?.canonical,
+    noindex: contactData?.seo?.noindex,
   });
 }
 

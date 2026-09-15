@@ -10,6 +10,8 @@ export function buildMetadata({
   siteUrl,
   siteName,
   ogImage,
+  canonical,
+  noindex,
 }: {
   title: string;
   description?: string;
@@ -17,6 +19,8 @@ export function buildMetadata({
   siteUrl: string;
   siteName: string;
   ogImage?: any;
+  canonical?: string;
+  noindex?: boolean;
 }): Metadata {
   const url = `${siteUrl}${path}`;
   const image = ogImage ? urlFor(ogImage).width(1200).height(630).url() : `${siteUrl}/logopng.png`;
@@ -24,7 +28,8 @@ export function buildMetadata({
   return {
     title,
     description,
-    alternates: { canonical: url },
+    alternates: { canonical: canonical || url },
+    ...(noindex && { robots: { index: false, follow: true } }),
     openGraph: {
       title,
       description,

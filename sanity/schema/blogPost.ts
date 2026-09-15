@@ -108,13 +108,6 @@ export const blogPost = {
       ],
     },
     {
-      name: "ogImage",
-      title: "Social Share Image",
-      type: "image",
-      options: { hotspot: true },
-      description: "Image shown when this post is shared on social media. Recommended size: 1200x630. Defaults to the first content image if left blank.",
-    },
-    {
       name: "author",
       title: "Author",
       type: "reference",

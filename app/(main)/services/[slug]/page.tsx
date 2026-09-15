@@ -35,12 +35,14 @@ export async function generateMetadata({
   if (!service) return { title: `Service Not Found | ${siteName}` };
 
   return buildMetadata({
-    title: service.metaTitle ?? `${service.title} | ${siteName}`,
-    description: service.metaDescription ?? service.shortDescription,
+    title: service.seo?.title ?? `${service.title} | ${siteName}`,
+    description: service.seo?.description ?? service.shortDescription,
     path: `/services/${slug}`,
     siteUrl,
     siteName,
-    ogImage: service.ogImage ?? (service.images?.[0]?.asset ? service.images[0].asset : undefined),
+    ogImage: service.seo?.ogImage ?? (service.images?.[0]?.asset ? service.images[0].asset : undefined),
+    canonical: service.seo?.canonical,
+    noindex: service.seo?.noindex,
   });
 }
 
@@ -67,7 +69,7 @@ export default async function ServiceDetailPage({
     "@type": "Service",
     "@id": `${siteUrl}/services/${slug}#service`,
     name: service.title,
-    description: service.metaDescription ?? service.shortDescription ?? service.title,
+    description: service.seo?.description ?? service.shortDescription ?? service.title,
     url: `${siteUrl}/services/${slug}`,
     serviceType: service.title,
     provider: {

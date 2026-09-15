@@ -50,23 +50,27 @@ export async function generateMetadata({
 
   if (serviceLP) {
     return buildMetadata({
-      title: serviceLP.metaTitle ?? `${serviceLP.heroHeading} | ${siteName}`,
-      description: serviceLP.metaDescription ?? serviceLP.heroSubheading,
+      title: serviceLP.seo?.title ?? `${serviceLP.heroHeading} | ${siteName}`,
+      description: serviceLP.seo?.description ?? serviceLP.heroSubheading,
       path,
       siteUrl,
       siteName,
-      ogImage: serviceLP.ogImage,
+      ogImage: serviceLP.seo?.ogImage,
+      canonical: serviceLP.seo?.canonical,
+      noindex: serviceLP.seo?.noindex,
     });
   }
 
   if (areaData) {
     return buildMetadata({
-      title: areaData.metaTitle ?? `Security Systems in ${areaData.name} | ${siteName}`,
-      description: areaData.metaDescription ?? areaData.description,
+      title: areaData.seo?.title ?? `Security Systems in ${areaData.name} | ${siteName}`,
+      description: areaData.seo?.description ?? areaData.description,
       path,
       siteUrl,
       siteName,
-      ogImage: areaData.ogImage,
+      ogImage: areaData.seo?.ogImage,
+      canonical: areaData.seo?.canonical,
+      noindex: areaData.seo?.noindex,
     });
   }
 
@@ -94,7 +98,7 @@ export default async function LandingPage({
       "@context": "https://schema.org",
       "@type": "Service",
       name: serviceLP.heroHeading,
-      description: serviceLP.heroSubheading ?? serviceLP.metaDescription,
+      description: serviceLP.heroSubheading ?? serviceLP.seo?.description,
       provider: {
         "@type": "LocalBusiness",
         "@id": `${siteConfig.seo.url}/#business`,

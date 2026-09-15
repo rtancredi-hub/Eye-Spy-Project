@@ -143,33 +143,11 @@ export const serviceLandingPage = {
 
     // ── SEO ───────────────────────────────────────────────────────────────────
     {
-      name: "metaTitle",
-      title: "Meta Title",
-      type: "string",
-      group: "seo",
-      description: "Browser tab title and search result heading. Defaults to Hero Heading if blank.",
-    },
-    {
-      name: "metaDescription",
-      title: "Meta Description",
-      type: "string",
-      group: "seo",
-      description: "Search result snippet. 150–160 characters recommended.",
-    },
-    {
-      name: "ogImage",
-      title: "Social Share Image",
-      type: "image",
-      group: "seo",
-      options: { hotspot: true },
-      description: "Image shown when this page is shared on social media. Recommended size: 1200x630.",
-    },
-    {
       name: "seo",
-      title: "Advanced SEO",
+      title: "SEO",
       type: "seo",
       group: "seo",
-      description: "Advanced SEO overrides (canonical URL, hide from search). Meta Title/Description/Image above are used unless set here.",
+      description: "SEO title, description, social share image, canonical URL, and hide-from-search toggle. Defaults to Hero Heading/Subheading if blank.",
     },
   ],
   preview: {

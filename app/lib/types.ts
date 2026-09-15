@@ -1,3 +1,14 @@
+// ─── SEO ──────────────────────────────────────────────────────────────────────
+// Shared shape for the `seo` object field (sanity/schema/objects/seo.ts) —
+// present on every publicly-routable document type. See docs/SEO-AEO-GEO.md.
+export interface SeoFields {
+  title?: string;
+  description?: string;
+  ogImage?: any;
+  canonical?: string;
+  noindex?: boolean;
+}
+
 // ─── ABOUT PAGE ───────────────────────────────────────────────────────────────
 export interface AboutPageValue {
   iconName?: string;
@@ -20,9 +31,7 @@ export interface AboutPageData {
   ctaHeading?: string;
   ctaBody?: string;
   ctaButtonLabel?: string;
-  metaTitle?: string;
-  metaDescription?: string;
-  ogImage?: any;
+  seo?: SeoFields;
 }
 
 // ─── CONTACT PAGE ─────────────────────────────────────────────────────────────
@@ -37,9 +46,7 @@ export interface ContactPageData {
   infoHeading?: string;
   serviceAreaLabel?: string;
   serviceAreaNote?: string;
-  metaTitle?: string;
-  metaDescription?: string;
-  ogImage?: any;
+  seo?: SeoFields;
 }
 
 // ─── HOW IT WORKS ─────────────────────────────────────────────────────────────
@@ -69,9 +76,7 @@ export interface HomePageData {
   howItWorksHeading?: string;
   howItWorksSubheading?: string;
   howItWorksSteps?: HowItWorksStep[];
-  metaTitle?: string;
-  metaDescription?: string;
-  ogImage?: any;
+  seo?: SeoFields;
 }
 
 // ─── SITE SETTINGS ────────────────────────────────────────────────────────────
@@ -121,7 +126,7 @@ export interface BlogPost {
   date: string;
   featured: boolean;
   content?: any[];
-  ogImage?: any;
+  seo?: SeoFields;
   author?: Author;
   publishedAt?: string;
   _updatedAt?: string;
@@ -169,9 +174,7 @@ export interface ServiceArea {
   nearbyAreas: string[];
   includesList?: string[];
   formPhotos?: { asset: any; alt?: string }[];
-  metaTitle?: string;
-  metaDescription?: string;
-  ogImage?: any;
+  seo?: SeoFields;
 }
 
 // ─── SERVICE LANDING PAGE ─────────────────────────────────────────────────────
@@ -189,9 +192,7 @@ export interface ServiceLandingPage {
   bottomCtaHeading?: string;
   bottomCtaBody?: string;
   formPhotos?: { asset: any; alt?: string }[];
-  metaTitle?: string;
-  metaDescription?: string;
-  ogImage?: any;
+  seo?: SeoFields;
   linkedService?: {
     title: string;
     slug: string;
@@ -209,9 +210,7 @@ export interface ServicePage {
   icon?: string;
   images?: { asset: any; alt?: string }[];
   features?: string[];
-  metaTitle?: string;
-  metaDescription?: string;
-  ogImage?: any;
+  seo?: SeoFields;
   // Pricing fields — optional; only present when priceLabel is set
   priceLabel?: string;
   priceNote?: string;
@@ -253,7 +252,5 @@ export interface PricingPage {
   bottomCtaText?: string;
   faqTitle?: string;
   faqItems?: PricingFaqItem[];
-  metaTitle?: string;
-  metaDescription?: string;
-  ogImage?: any;
+  seo?: SeoFields;
 }

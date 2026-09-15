@@ -89,29 +89,10 @@ export const servicePage = {
       of: [{ type: "string" }],
     },
     {
-      name: "metaTitle",
-      title: "Meta Title",
-      type: "string",
-      description: "SEO title shown in browser tabs and search results. Defaults to the service title if left blank.",
-    },
-    {
-      name: "metaDescription",
-      title: "Meta Description",
-      type: "string",
-      description: "SEO description shown in search results. Defaults to the short description if left blank.",
-    },
-    {
-      name: "ogImage",
-      title: "Social Share Image",
-      type: "image",
-      options: { hotspot: true },
-      description: "Image shown when this page is shared on social media. Recommended size: 1200x630. Defaults to the first gallery image if left blank.",
-    },
-    {
       name: "seo",
       title: "SEO",
       type: "seo",
-      description: "Advanced SEO overrides (canonical URL, hide from search). Title/Description/Image above are used unless set here.",
+      description: "SEO title, description, social share image, canonical URL, and hide-from-search toggle. Defaults to the service title/short description/first gallery image if left blank.",
     },
     {
       name: "order",

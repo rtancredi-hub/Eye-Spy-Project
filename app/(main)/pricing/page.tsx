@@ -18,10 +18,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
   const siteName = settings.siteName || siteConfig.name;
   const siteUrl = settings.siteUrl || siteConfig.seo.url;
-  const title = pricingData?.metaTitle
+  const title = pricingData?.seo?.title
     ?? (pricingData?.pageTitle ? `${pricingData.pageTitle} | ${siteName}` : `Pricing | ${siteName}`);
   const description =
-    pricingData?.metaDescription ??
+    pricingData?.seo?.description ??
     pricingData?.pageSubtitle ??
     `Transparent pricing for CCTV, alarm systems, access control, and cabling. No hidden fees — get a free estimate today.`;
 
@@ -31,7 +31,9 @@ export async function generateMetadata(): Promise<Metadata> {
     path: "/pricing",
     siteUrl,
     siteName,
-    ogImage: pricingData?.ogImage,
+    ogImage: pricingData?.seo?.ogImage,
+    canonical: pricingData?.seo?.canonical,
+    noindex: pricingData?.seo?.noindex,
   });
 }
 

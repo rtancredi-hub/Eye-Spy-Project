@@ -169,33 +169,11 @@ export const homePage = {
 
     // ── SEO ───────────────────────────────────────────────────────────────────────
     {
-      name: "metaTitle",
-      title: "Meta Title",
-      type: "string",
-      fieldset: "seo",
-      description: "SEO title shown in browser tabs and search results. Defaults to the site name if left blank.",
-    },
-    {
-      name: "metaDescription",
-      title: "Meta Description",
-      type: "string",
-      fieldset: "seo",
-      description: "SEO description shown in search results. Defaults to the site description if left blank.",
-    },
-    {
-      name: "ogImage",
-      title: "Social Share Image",
-      type: "image",
-      fieldset: "seo",
-      options: { hotspot: true },
-      description: "Image shown when this page is shared on social media. Recommended size: 1200x630.",
-    },
-    {
       name: "seo",
-      title: "Advanced SEO",
+      title: "SEO",
       type: "seo",
       fieldset: "seo",
-      description: "Advanced SEO overrides (canonical URL, hide from search). Meta Title/Description/Image above are used unless set here.",
+      description: "SEO title, description, social share image, canonical URL, and hide-from-search toggle. Defaults to the site name/description if left blank.",
     },
   ],
 };

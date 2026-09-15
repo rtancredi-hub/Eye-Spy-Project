@@ -30,12 +30,14 @@ export async function generateMetadata(): Promise<Metadata> {
   const siteUrl = settings.siteUrl || siteConfig.seo.url;
 
   return buildMetadata({
-    title: homePage?.metaTitle ?? `${siteName} | Security System Installation`,
-    description: homePage?.metaDescription ?? (settings.description || siteConfig.description),
+    title: homePage?.seo?.title ?? `${siteName} | Security System Installation`,
+    description: homePage?.seo?.description ?? (settings.description || siteConfig.description),
     path: "/",
     siteUrl,
     siteName,
-    ogImage: homePage?.ogImage,
+    ogImage: homePage?.seo?.ogImage,
+    canonical: homePage?.seo?.canonical,
+    noindex: homePage?.seo?.noindex,
   });
 }
 

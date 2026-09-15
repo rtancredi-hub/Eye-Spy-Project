@@ -22,12 +22,14 @@ export async function generateMetadata({
   if (!post) return { title: `Post Not Found | ${siteConfig.name}` };
 
   return buildMetadata({
-    title: `${post.title} | ${siteConfig.name} Blog`,
-    description: post.excerpt,
+    title: post.seo?.title ?? `${post.title} | ${siteConfig.name} Blog`,
+    description: post.seo?.description ?? post.excerpt,
     path: `/blog/${slug}`,
     siteUrl: siteConfig.seo.url,
     siteName: siteConfig.name,
-    ogImage: post.ogImage,
+    ogImage: post.seo?.ogImage,
+    canonical: post.seo?.canonical,
+    noindex: post.seo?.noindex,
   });
 }
 

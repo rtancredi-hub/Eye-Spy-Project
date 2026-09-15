@@ -50,7 +50,7 @@ export const singlePostQuery = `
     date,
     featured,
     content,
-    ogImage,
+    seo{title, description, ogImage, canonical, noindex},
     publishedAt,
     _updatedAt,
     author->{ name, role, bio, photo }
@@ -125,9 +125,7 @@ export const singleAreaQuery = `
     nearbyAreas,
     includesList,
     formPhotos[]{ asset, alt },
-    metaTitle,
-    metaDescription,
-    ogImage
+    seo{title, description, ogImage, canonical, noindex}
   }
 `;
 
@@ -151,9 +149,7 @@ export const singleServiceLandingPageQuery = `
     bottomCtaHeading,
     bottomCtaBody,
     formPhotos[]{ asset, alt },
-    metaTitle,
-    metaDescription,
-    ogImage,
+    seo{title, description, ogImage, canonical, noindex},
     linkedService->{
       title,
       "slug": slug.current,
@@ -186,9 +182,7 @@ export const singleServicePageQuery = `
     icon,
     images[]{ asset, alt },
     features,
-    metaTitle,
-    metaDescription,
-    ogImage
+    seo{title, description, ogImage, canonical, noindex}
   }
 `;
 
@@ -213,9 +207,7 @@ export const aboutPageQuery = `
     ctaHeading,
     ctaBody,
     ctaButtonLabel,
-    metaTitle,
-    metaDescription,
-    ogImage
+    seo{title, description, ogImage, canonical, noindex}
   }
 `;
 
@@ -232,9 +224,7 @@ export const contactPageQuery = `
     infoHeading,
     serviceAreaLabel,
     serviceAreaNote,
-    metaTitle,
-    metaDescription,
-    ogImage
+    seo{title, description, ogImage, canonical, noindex}
   }
 `;
 
@@ -261,9 +251,7 @@ export const homePageQuery = `
       title,
       description
     },
-    metaTitle,
-    metaDescription,
-    ogImage
+    seo{title, description, ogImage, canonical, noindex}
   }
 `;
 
@@ -285,9 +273,7 @@ export const pricingPageQuery = `
       question,
       answer
     },
-    metaTitle,
-    metaDescription,
-    ogImage
+    seo{title, description, ogImage, canonical, noindex}
   }
 `;
 
