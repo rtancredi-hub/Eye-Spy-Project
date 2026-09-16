@@ -128,8 +128,12 @@
   --font-size-7xl: 4.5rem; /* 72px */
   --font-size-8xl: 6rem; /* 96px */
 
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  /* Canvas background — the whole site is dark-themed and never applies
+     the shadcn .dark class, so this must be the brand dark color (not
+     shadcn's white default): overscroll bounce and safe-area insets on
+     mobile paint this color, and it was showing as a white bar. */
+  --background: var(--brand-bg-base);
+  --foreground: var(--text-primary);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);

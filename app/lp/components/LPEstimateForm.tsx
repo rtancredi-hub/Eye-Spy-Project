@@ -76,7 +76,6 @@ export default function LPEstimateForm({
     }
     setSubmitError(null);
     setIsSubmitting(true);
-    trackConversion();
     try {
       const res = await fetch("/api/estimate", {
         method: "POST",
@@ -87,6 +86,7 @@ export default function LPEstimateForm({
       if (!res.ok || !data.success) {
         throw new Error(data.error ?? "Submission failed");
       }
+      trackConversion();
       setIsSubmitted(true);
     } catch {
       setSubmitError("Something went wrong — please try again or call us directly.");

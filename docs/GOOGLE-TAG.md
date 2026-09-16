@@ -11,9 +11,12 @@ Navbar/Footer for these routes).
   - `NEXT_PUBLIC_GOOGLE_TAG_ID` — the `AW-XXXXXXXXX` tag id.
   - `NEXT_PUBLIC_GOOGLE_CONVERSION_LABEL` — the label from a specific Google
     Ads conversion action's `send_to` value (Ads → Goals → Summary →
-    conversion action → "Tag setup" → the part after the `/`). The snippet
-    the client provided didn't include one yet — leave this blank and
-    `trackConversion()` fires on the bare tag id until a real label is added.
+    conversion action → "Tag setup" → the part after the `/`). Currently set
+    to `OVh5CInYkfkcEP-B2fpD` ("Submit lead form conversion"). To add a
+    second conversion action later, don't overwrite this — pass its
+    `"AW-18242486527/<new-label>"` as `trackConversion`'s second argument
+    (`sendTo`) from wherever that action fires; the default stays the lead
+    form label for every existing call site.
 - **`app/lp/components/GoogleTag.tsx`** — loads the base `gtag.js` snippet via
   `next/script` (`strategy="afterInteractive"`). Mounted once, in
   `app/lp/layout.tsx`, so every current and future page under `/lp/*` gets it
@@ -28,11 +31,11 @@ Navbar/Footer for these routes).
   `trackConversion()` on click and then continues navigation itself (it always
   calls `preventDefault()`).
 - **`app/lp/components/LPEstimateForm.tsx`** — the shared estimate form used by
-  every area and service landing page. Calls `trackConversion()` when the form
-  is submitted (no destination — the success state is same-page), then POSTs
-  to `/api/estimate` (Resend). This is also where the "Additional Details"
-  textarea lives, and where any future `/lp/*` page should reuse the form from
-  instead of re-implementing one.
+  every area and service landing page. POSTs to `/api/estimate` (Resend) and,
+  only once that request confirms success (`res.ok && data.success`), calls
+  `trackConversion()` (no destination — the success state is same-page). This
+  is also where the "Additional Details" textarea lives, and where any future
+  `/lp/*` page should reuse the form from instead of re-implementing one.
 
 ## Swapping in a different conversion label later
 
@@ -42,11 +45,12 @@ the bare tag id. No code change needed.
 
 ## Verifying it's firing
 
-1. `npm run dev`, open any `/lp/[area]` page in Chrome with Tag Assistant
-   installed, or open DevTools → Network and filter for `google-analytics.com`
-   or `/collect`.
-2. Click a phone number, or submit the estimate form.
+1. `npm run dev`, open any `/lp/[area]` page in Chrome, open DevTools →
+   Network, and filter for `google.com/pagead` or
+   `googleads.g.doubleclick.net` (the Ads conversion pixel — not
+   `google-analytics.com`, which is GA4, a separate tag).
+2. Click a phone number, or submit the estimate form with valid data.
 3. You should see a request fire before the tab navigates (for `tel:` /
-   `mailto:` / external links) or immediately on submit (for the form) — the
-   500ms timeout fallback means navigation/success never waits long even if
-   that request is slow or blocked by an ad blocker.
+   `mailto:` / external links) or right after the estimate API call succeeds
+   (for the form) — the 500ms timeout fallback means navigation/success never
+   waits long even if that request is slow or blocked by an ad blocker.

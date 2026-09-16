@@ -21,7 +21,11 @@ const SEND_TO = CONVERSION_LABEL
 // Uses gtag's event_callback + event_timeout fallback so a slow or blocked
 // tag never traps the user on the page — the callback fires from whichever
 // happens first, and only ever runs once.
-export function trackConversion(destinationUrl?: string): void {
+//
+// sendTo defaults to the lead-form conversion label above. To wire up a
+// second conversion action later, pass its "AW-.../<label>" as sendTo —
+// no other code needs to change.
+export function trackConversion(destinationUrl?: string, sendTo: string | undefined = SEND_TO): void {
   const proceed = () => {
     if (destinationUrl) window.location.href = destinationUrl;
   };
@@ -39,7 +43,7 @@ export function trackConversion(destinationUrl?: string): void {
   };
 
   window.gtag("event", "conversion", {
-    send_to: SEND_TO,
+    send_to: sendTo,
     event_callback: callbackOnce,
     event_timeout: 500,
   });
