@@ -16,9 +16,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
 
-  revalidatePath("/");
-  revalidatePath("/blog");
-  revalidatePath("/about");
+  // Revalidate every route under the root layout. Site settings feed the
+  // shared layout and most docs appear on several pages (services, blog
+  // slugs, landing pages, sitemap), so per-path revalidation misses pages.
+  revalidatePath("/", "layout");
 
   return NextResponse.json({ revalidated: true, timestamp: Date.now() });
 }

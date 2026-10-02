@@ -10,10 +10,10 @@ export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
   apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION!,
-  useCdn: true,
-  // useCdn: true means responses are cached by Sanity's CDN.
-  // Faster reads but up to 60 second delay on new content.
-  // Set to false if you need instant updates.
+  useCdn: false,
+  // Pages are cached by Next.js and refreshed by the /api/revalidate webhook,
+  // so reads must bypass Sanity's CDN — otherwise a revalidation that runs
+  // right after publish can re-cache the stale CDN response.
   token: process.env.SANITY_API_TOKEN,
 });
 
