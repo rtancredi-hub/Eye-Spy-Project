@@ -129,6 +129,7 @@ export interface BlogPost {
   seo?: SeoFields;
   author?: Author;
   publishedAt?: string;
+  _createdAt?: string;
   _updatedAt?: string;
 }
 

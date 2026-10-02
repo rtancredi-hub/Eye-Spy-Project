@@ -65,6 +65,21 @@ export const blogPost = {
       description:
         "Turn on to make this the large featured card at the top of the blog page. Only one post should be featured at a time — turn off the previous featured post when enabling a new one.",
       initialValue: false,
+      validation: (R: any) =>
+        R.custom(async (value: boolean | undefined, context: any) => {
+          if (!value) return true;
+          const id = context.document._id.replace(/^drafts\./, "");
+          const others = await context
+            .getClient({ apiVersion: "2024-01-01" })
+            .fetch(
+              `count(*[_type == "blogPost" && featured == true && !(_id in path("drafts.**")) && _id != $id])`,
+              { id },
+            );
+          return (
+            others === 0 ||
+            "Another post is already featured. Only the newest featured post shows on the blog — turn off featured on the other post."
+          );
+        }).warning(),
     },
     {
       name: "content",

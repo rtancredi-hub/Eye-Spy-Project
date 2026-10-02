@@ -43,17 +43,28 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
       return words.every((word) => searchable.includes(word));
     });
 
+  // Only one post can be featured. If several are toggled on in Sanity, the
+  // newest one wins and the rest are treated as regular posts.
+  const postTime = (p: BlogPost) =>
+    new Date(p.publishedAt ?? p._createdAt ?? 0).getTime();
+  const featuredPost = posts
+    .filter((p) => p.featured)
+    .sort((a, b) => postTime(b) - postTime(a))[0];
+
+  // Featured card only shows on the unfiltered, unsearched view
+  const showFeatured =
+    !!featuredPost && activeCategory === "All" && !searchQuery;
+
+  // Grid excludes the featured post only while its card is showing
+  const gridSource = showFeatured
+    ? filteredPosts.filter((p) => p.slug !== featuredPost.slug)
+    : filteredPosts;
+
   // Visible slice — only show up to visibleCount posts
-  const visiblePosts = filteredPosts.slice(0, visibleCount);
+  const gridPosts = gridSource.slice(0, visibleCount);
 
   // Whether there are more posts to show
-  const hasMore = visibleCount < filteredPosts.length;
-
-  // Featured post only shows when not searching
-  const featuredPost = !searchQuery ? posts.find((p) => p.featured) : null;
-
-  // Grid always excludes the featured post to avoid duplication
-  const gridPosts = visiblePosts.filter((p) => !p.featured || !!searchQuery);
+  const hasMore = visibleCount < gridSource.length;
 
   const fadeUp: Variants = {
     hidden: { opacity: 0, y: 24 },
@@ -192,9 +203,9 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
           </div>
 
           {/* Featured post — larger card, only shows when "All" is selected */}
-          {featuredPost && activeCategory === "All" && (
+          {showFeatured && (
             <motion.a
-              href={`/blog/${posts[0].slug}`}
+              href={`/blog/${featuredPost.slug}`}
               initial={{ opacity: 0, y: 20 }}
               animate={
                 postsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
@@ -218,26 +229,26 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
                       className="px-3 py-1 rounded-full border border-white/10 text-slate-500 text-xs uppercase tracking-widest"
                       style={{ fontFamily: "var(--font-rajdhani)" }}
                     >
-                      {posts[0].category}
+                      {featuredPost.category}
                     </span>
                   </div>
                   <h2
                     className="text-2xl md:text-3xl font-bold text-white mb-3 group-hover:text-brand-accent transition-colors duration-200"
                     style={{ fontFamily: "var(--font-rajdhani)" }}
                   >
-                    {posts[0].title}
+                    {featuredPost.title}
                   </h2>
                   <p
                     className="text-slate-400 leading-relaxed mb-4 max-w-2xl"
                     style={{ fontFamily: "var(--font-dm-sans)" }}
                   >
-                    {posts[0].excerpt}
+                    {featuredPost.excerpt}
                   </p>
                   <div className="flex items-center gap-4 text-slate-600 text-xs">
                     <span className="flex items-center gap-1.5">
-                      <Clock size={12} /> {posts[0].readTime}
+                      <Clock size={12} /> {featuredPost.readTime}
                     </span>
-                    <span>{posts[0].date}</span>
+                    <span>{featuredPost.date}</span>
                   </div>
                 </div>
                 <div className="shrink-0 flex items-center justify-center w-12 h-12 rounded-full border border-white/10 group-hover:border-brand-accent/30 group-hover:text-brand-accent text-slate-500 transition-all duration-200">
@@ -304,9 +315,8 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
             className="text-slate-600 text-xs text-center mt-8"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
-            Showing {gridPosts.length} of{" "}
-            {filteredPosts.filter((p) => !p.featured || !!searchQuery).length}{" "}
-            articles
+            Showing {gridPosts.length + (showFeatured ? 1 : 0)} of{" "}
+            {filteredPosts.length} articles
             {searchQuery && ` for "${searchQuery}"`}
           </p>
 

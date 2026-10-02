@@ -27,7 +27,7 @@ export const siteSettingsQuery = `
 
 // ─── BLOG POSTS ───────────────────────────────────────────────────────────────
 export const allPostsQuery = `
-  *[_type == "blogPost"] | order(date desc){
+  *[_type == "blogPost"] | order(coalesce(publishedAt, _createdAt) desc){
     "slug": slug.current,
     title,
     excerpt,
@@ -35,6 +35,8 @@ export const allPostsQuery = `
     readTime,
     date,
     featured,
+    publishedAt,
+    _createdAt,
     _updatedAt,
     "noindex": seo.noindex
   }
