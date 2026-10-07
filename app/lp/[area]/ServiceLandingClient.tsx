@@ -260,6 +260,21 @@ export default function ServiceLandingClient({
             </div>
 
             {/* Right — form card */}
+
+            <div className="flex flex-col gap-6">
+  {page.formPhotos?.[0]?.asset && (
+    <div className="hidden lg:block relative aspect-[2/1] rounded-sm overflow-hidden border border-white/10">
+      <Image
+        src={urlFor(page.formPhotos[0].asset).width(1200).url()}
+        alt={page.formPhotos[0].alt ?? "Project photo"}
+        fill
+        className="object-cover"
+        sizes="50vw"
+        priority
+      />
+    </div>
+  )}
+              
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
@@ -286,6 +301,7 @@ export default function ServiceLandingClient({
               </div>
               <LPEstimateForm services={services} defaultService={defaultService} />
             </motion.div>
+              </div>
           </div>
         </section>
 
