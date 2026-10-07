@@ -33,19 +33,19 @@ export const siteConfig = {
     "Licensed security system installation for homes and businesses. Cameras, alarms, access control. Get a free estimate today.",
 
   // ─── CONTACT ─────────────────────────────────────────────────────────────
-  phone: "(555) 000-0000",
-  phoneHref: "tel:+15550000000", // used in href attributes
+  phone: "(914) 882-5642",
+  phoneHref: "tel:+19148825642", // used in href attributes
   email: "services@eyespycabling.com",
   emailHref: "mailto:services@eyespycabling.com",
 
   // ─── LOCATION ────────────────────────────────────────────────────────────
-  address: "123 Main St, City, State 00000",
+  address: "65 Brushwood Drive, Shirley, NY 11967",
   // Structured address fields — used by JSON-LD schemas (PostalAddress).
   // Keep these in sync with the display address above.
-  addressStreet: "123 Main St",
-  addressCity: "City",
-  addressRegion: "State",
-  addressPostal: "00000",
+  addressStreet: "65 Brushwood Drive",
+  addressCity: "Shirley",
+  addressRegion: "NY",
+  addressPostal: "11967",
   serviceArea: "Serving the greater [City] area within 50 miles",
 
   // ─── BUSINESS HOURS ──────────────────────────────────────────────────────
@@ -96,9 +96,9 @@ export const siteConfig = {
   // ─── SEO ─────────────────────────────────────────────────────────────────
   // Used in layout.tsx metadata
   seo: {
-    title: "EyeSpy Cabliing | Security System Installation",
+    title: "Eyespy Cabling | Low-Voltage Contractor NYC & Long Island",
     description:
-      "Licensed security system installation for homes and businesses in [City]. Cameras, alarms, access control. Get a free estimate today.",
+      "Eyespy Cabling installs CCTV, access control, alarm systems, and structured cabling for commercial clients across NYC, Long Island & Westchester.",
     keywords:
       "security system installation, CCTV cameras, alarm systems, access control, [City]",
     url: "https://www.eyespycabling.com",
