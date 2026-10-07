@@ -152,7 +152,7 @@ export default function ServiceLandingClient({
 
       <main className="bg-brand-base pt-16">
         {/* ── HERO + FORM ─────────────────────────────────────────────── */}
-        <section className="relative min-h-screen flex items-center overflow-hidden">
+        <section className="relative overflow-hidden">
           <div
             className="pointer-events-none absolute inset-0"
             style={{
@@ -163,7 +163,7 @@ export default function ServiceLandingClient({
           />
           <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
 
-          <div className="relative max-w-6xl mx-auto px-6 md:px-16 py-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
+          <div className="relative max-w-6xl mx-auto px-6 md:px-16 py-10 lg:py-14 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start w-full">
             <div className="flex flex-col gap-8">
               <motion.p
                 custom={0}
@@ -270,6 +270,16 @@ export default function ServiceLandingClient({
               }}
               className="bg-brand-surface border border-white/10 rounded-sm p-8"
             >
+              <div className="hidden lg:block">
+  <PhotoCarousel
+    images={(page.formPhotos ?? [])
+      .filter((img) => img?.asset)
+      .map((img) => ({
+        url: urlFor(img.asset).width(1200).url(),
+        alt: img.alt,
+      }))}
+  />
+</div>
               <div className="mb-6">
                 <h2
                   className="text-2xl font-bold text-white mb-1"
