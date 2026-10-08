@@ -67,8 +67,7 @@ export default async function RootLayout({
   ]);
 
   const siteUrl = settings.siteUrl || siteConfig.seo.url;
-  const reviewCount = settings.reviewCount ?? 124;
-  const ratingValue = settings.stats.rating.replace("★", "").trim();
+
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
@@ -110,13 +109,7 @@ export default async function RootLayout({
         closes: "16:00",
       },
     ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue,
-      reviewCount: String(reviewCount),
-      bestRating: "5",
-      worstRating: "1",
-    },
+   
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Security System Installation Services",
