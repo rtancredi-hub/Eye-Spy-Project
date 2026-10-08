@@ -61,8 +61,7 @@ export default async function ServiceDetailPage({
   if (!service) notFound();
 
   const siteUrl = settings.siteUrl || siteConfig.seo.url;
-  const ratingValue = settings.stats.rating.replace("★", "").trim();
-  const reviewCount = settings.reviewCount ?? 124;
+
 
   const serviceSchema: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -80,13 +79,7 @@ export default async function ServiceDetailPage({
       "@type": "City",
       name: siteConfig.addressCity,
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue,
-      reviewCount: String(reviewCount),
-      bestRating: "5",
-      worstRating: "1",
-    },
+   
   };
 
   if (service.priceLabel) {
