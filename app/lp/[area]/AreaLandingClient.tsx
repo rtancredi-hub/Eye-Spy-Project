@@ -471,7 +471,7 @@ export default function AreaLandingClient({
               images={(areaData.formPhotos ?? [])
                 .filter((img) => img?.asset)
                 .map((img) => ({
-                  url: urlFor(img.asset).width(1200).url(),
+                  url: urlFor(img).width(1200).height(675).fit("crop").url(),
                   alt: img.alt,
                 }))}
             />
