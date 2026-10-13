@@ -126,7 +126,7 @@ export const singleAreaQuery = `
     description,
     nearbyAreas,
     includesList,
-    formPhotos[]{ asset, alt },
+    formPhotos[]{ asset, alt, crop, hotspot },
     seo{title, description, ogImage, canonical, noindex}
   }
 `;
@@ -150,7 +150,7 @@ export const singleServiceLandingPageQuery = `
     bottomCtaEyebrow,
     bottomCtaHeading,
     bottomCtaBody,
-    formPhotos[]{ asset, alt },
+    formPhotos[]{ asset, alt, crop, hotspot },
     seo{title, description, ogImage, canonical, noindex},
     linkedService->{
       title,
