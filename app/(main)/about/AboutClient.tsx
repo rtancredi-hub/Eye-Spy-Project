@@ -119,14 +119,14 @@ export default function AboutClient({
       : defaultStoryParagraphs;
 
   return (
-    <main className="bg-brand-base">
+    <main className="bg-page">
       {/* ── HERO BANNER ─────────────────────────────────────────────────────── */}
-      <section className="relative pt-40 pb-24 overflow-hidden bg-brand-base">
+      <section className="relative pt-40 pb-24 overflow-hidden bg-page">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,180,255,0.08) 0%, transparent 70%)",
+              "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(239,107,77,0.08) 0%, transparent 70%)",
           }}
           aria-hidden
         />
@@ -139,7 +139,7 @@ export default function AboutClient({
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="text-brand-accent text-xs uppercase tracking-widest mb-6"
+            className="text-orange-700 text-xs uppercase tracking-widest mb-6"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             {aboutData.heroEyebrow ?? "Our Story"}
@@ -150,7 +150,7 @@ export default function AboutClient({
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="text-5xl md:text-6xl font-bold text-white leading-tight mb-6"
+            className="text-5xl md:text-6xl font-bold text-brand-base leading-tight mb-6"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             {aboutData.heroHeadingLine1 ?? "Security Done Right,"}
@@ -172,7 +172,7 @@ export default function AboutClient({
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="text-slate-400 text-lg max-w-2xl leading-relaxed"
+            className="text-slate-600 text-lg max-w-2xl leading-relaxed"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             {aboutData.heroSubtitle ??
@@ -184,7 +184,7 @@ export default function AboutClient({
       {/* ── OUR STORY ───────────────────────────────────────────────────────── */}
       <section
         ref={storyRef}
-        className="relative bg-brand-surface py-24 overflow-hidden"
+        className="relative bg-page-alt py-24 overflow-hidden"
       >
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
@@ -197,13 +197,13 @@ export default function AboutClient({
         >
           <motion.div variants={itemVariants}>
             <p
-              className="text-brand-accent text-xs uppercase tracking-widest mb-4"
+              className="text-orange-700 text-xs uppercase tracking-widest mb-4"
               style={{ fontFamily: "var(--font-rajdhani)" }}
             >
               {aboutData.storyEyebrow ?? "How We Started"}
             </p>
             <h2
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
+              className="text-4xl md:text-5xl font-bold text-brand-base mb-6"
               style={{ fontFamily: "var(--font-rajdhani)" }}
             >
               {aboutData.storyHeading ?? (
@@ -215,7 +215,7 @@ export default function AboutClient({
               )}
             </h2>
             <div
-              className="flex flex-col gap-4 text-slate-400 leading-relaxed"
+              className="flex flex-col gap-4 text-slate-600 leading-relaxed"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
               {storyParagraphs.map((para, i) => (
@@ -238,16 +238,16 @@ export default function AboutClient({
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="bg-brand-card border border-white/5 rounded-sm p-6 flex flex-col gap-2"
+                className="bg-white border border-slate-200 rounded-sm p-6 flex flex-col gap-2"
               >
                 <span
-                  className="text-4xl font-bold text-white"
+                  className="text-4xl font-bold text-brand-base"
                   style={{ fontFamily: "var(--font-rajdhani)" }}
                 >
                   {stat.value}
                 </span>
                 <span
-                  className="text-xs text-slate-500 uppercase tracking-widest"
+                  className="text-xs text-slate-600 uppercase tracking-widest"
                   style={{ fontFamily: "var(--font-rajdhani)" }}
                 >
                   {stat.label}
@@ -261,7 +261,7 @@ export default function AboutClient({
       {/* ── CORE VALUES ─────────────────────────────────────────────────────── */}
       <section
         ref={valuesRef}
-        className="relative bg-brand-base py-24 overflow-hidden"
+        className="relative bg-page py-24 overflow-hidden"
       >
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
@@ -269,13 +269,13 @@ export default function AboutClient({
         <div className="max-w-6xl mx-auto px-6 md:px-16">
           <div className="flex flex-col items-center text-center mb-14">
             <p
-              className="text-brand-accent text-xs uppercase tracking-widest mb-4"
+              className="text-orange-700 text-xs uppercase tracking-widest mb-4"
               style={{ fontFamily: "var(--font-rajdhani)" }}
             >
               {aboutData.valuesEyebrow ?? "What Drives Us"}
             </p>
             <h2
-              className="text-4xl md:text-5xl font-bold text-white"
+              className="text-4xl md:text-5xl font-bold text-brand-base"
               style={{ fontFamily: "var(--font-rajdhani)" }}
             >
               {aboutData.valuesHeading ?? "Our Core Values"}
@@ -292,21 +292,21 @@ export default function AboutClient({
               <motion.div
                 key={value.title}
                 variants={itemVariants}
-                className="group p-6 rounded-sm border border-white/5 hover:border-brand-accent/20 bg-brand-card hover:bg-brand-card/80 transition-all duration-300"
+                className="group p-6 rounded-sm border border-slate-200 hover:border-brand-accent/20 bg-white hover:shadow-lg hover:shadow-slate-900/10 transition-all duration-300"
               >
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand-accent/10 text-brand-accent mb-4 group-hover:bg-brand-accent/20 transition-colors duration-300">
+                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand-accent/10 text-orange-700 mb-4 group-hover:bg-brand-accent/20 transition-colors duration-300">
                   {value.iconName
                     ? (iconMap[value.iconName] ?? <ShieldCheck size={20} />)
                     : <ShieldCheck size={20} />}
                 </span>
                 <h3
-                  className="text-base font-bold text-white mb-2"
+                  className="text-base font-bold text-brand-base mb-2"
                   style={{ fontFamily: "var(--font-rajdhani)" }}
                 >
                   {value.title}
                 </h3>
                 <p
-                  className="text-slate-400 text-sm leading-relaxed"
+                  className="text-slate-600 text-sm leading-relaxed"
                   style={{ fontFamily: "var(--font-dm-sans)" }}
                 >
                   {value.description}
@@ -320,7 +320,7 @@ export default function AboutClient({
       {/* ── TEAM ────────────────────────────────────────────────────────────── */}
       <section
         ref={teamRef}
-        className="relative bg-brand-surface py-24 overflow-hidden"
+        className="relative bg-page-alt py-24 overflow-hidden"
       >
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
@@ -328,13 +328,13 @@ export default function AboutClient({
         <div className="max-w-6xl mx-auto px-6 md:px-16">
           <div className="flex flex-col items-center text-center mb-14">
             <p
-              className="text-brand-accent text-xs uppercase tracking-widest mb-4"
+              className="text-orange-700 text-xs uppercase tracking-widest mb-4"
               style={{ fontFamily: "var(--font-rajdhani)" }}
             >
               The People Behind The Work
             </p>
             <h2
-              className="text-4xl md:text-5xl font-bold text-white"
+              className="text-4xl md:text-5xl font-bold text-brand-base"
               style={{ fontFamily: "var(--font-rajdhani)" }}
             >
               Meet The Team
@@ -351,31 +351,31 @@ export default function AboutClient({
               <motion.div
                 key={member.name}
                 variants={itemVariants}
-                className="group p-8 rounded-sm border border-white/5 hover:border-brand-accent/20 bg-brand-card transition-all duration-300"
+                className="group p-8 rounded-sm border border-slate-200 hover:border-brand-accent/20 bg-white transition-all duration-300"
               >
                 <div className="w-14 h-14 rounded-full bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center mb-5">
-                  <Users size={22} className="text-brand-accent/60" />
+                  <Users size={22} className="text-orange-700/60" />
                 </div>
                 <h3
-                  className="text-lg font-bold text-white mb-1"
+                  className="text-lg font-bold text-brand-base mb-1"
                   style={{ fontFamily: "var(--font-rajdhani)" }}
                 >
                   {member.name}
                 </h3>
                 <p
-                  className="text-brand-accent text-xs uppercase tracking-widest mb-1"
+                  className="text-orange-700 text-xs uppercase tracking-widest mb-1"
                   style={{ fontFamily: "var(--font-rajdhani)" }}
                 >
                   {member.role}
                 </p>
                 <p
-                  className="text-slate-600 text-xs mb-4"
+                  className="text-slate-500 text-xs mb-4"
                   style={{ fontFamily: "var(--font-dm-sans)" }}
                 >
                   {member.years}
                 </p>
                 <p
-                  className="text-slate-400 text-sm leading-relaxed"
+                  className="text-slate-600 text-sm leading-relaxed"
                   style={{ fontFamily: "var(--font-dm-sans)" }}
                 >
                   {member.bio}
@@ -387,7 +387,7 @@ export default function AboutClient({
       </section>
 
       {/* ── CTA ─────────────────────────────────────────────────────────────── */}
-      <section className="relative bg-brand-base py-24 overflow-hidden">
+      <section className="relative bg-page py-24 overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
         <div className="absolute top-6 left-6 w-8 h-8 border-l border-t border-brand-accent/20" />
         <div className="absolute top-6 right-6 w-8 h-8 border-r border-t border-brand-accent/20" />
@@ -396,19 +396,19 @@ export default function AboutClient({
 
         <div className="max-w-3xl mx-auto px-6 md:px-16 flex flex-col items-center text-center">
           <p
-            className="text-brand-accent text-xs uppercase tracking-widest mb-4"
+            className="text-orange-700 text-xs uppercase tracking-widest mb-4"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             {aboutData.ctaEyebrow ?? "Ready to Get Started?"}
           </p>
           <h2
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            className="text-4xl md:text-5xl font-bold text-brand-base mb-6"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             {aboutData.ctaHeading ?? "Let's Protect Your Property"}
           </h2>
           <p
-            className="text-slate-400 text-lg max-w-xl mb-10 leading-relaxed"
+            className="text-slate-600 text-lg max-w-xl mb-10 leading-relaxed"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             {aboutData.ctaBody ??
@@ -416,7 +416,7 @@ export default function AboutClient({
           </p>
           <a
             href="/#estimate-form"
-            className="group flex items-center gap-3 bg-brand-accent text-brand-base font-bold px-10 py-4 rounded-sm text-sm uppercase tracking-widest hover:bg-white transition-colors duration-200"
+            className="group flex items-center gap-3 bg-brand-accent text-brand-base font-bold px-10 py-4 rounded-sm text-sm uppercase tracking-widest hover:bg-brand-base hover:text-white transition-colors duration-200"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             {aboutData.ctaButtonLabel ?? "Get a Free Estimate"}

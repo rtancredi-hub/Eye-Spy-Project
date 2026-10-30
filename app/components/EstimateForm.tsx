@@ -127,23 +127,23 @@ export default function EstimateForm({
       className="flex items-center gap-2 text-xs mb-2"
       style={{ fontFamily: "var(--font-rajdhani)" }}
     >
-      <span className="font-mono text-brand-accent/60 tracking-widest uppercase text-[9px]">PORT /</span>
+      <span className="font-mono text-orange-700/60 tracking-widest uppercase text-[9px]">PORT /</span>
       <span className="uppercase tracking-widest text-text-secondary">{children}</span>
     </label>
   );
 
   const inputClass =
-    `w-full bg-brand-card border px-4 py-3 rounded-sm text-text-primary text-sm outline-none transition-colors duration-200 placeholder:text-text-subtle` +
+    `w-full bg-white border px-4 py-3 rounded-sm text-text-primary text-sm outline-none transition-colors duration-200 placeholder:text-text-subtle` +
     ` focus:border-brand-accent/40`;
 
   if (isSubmitted) {
     return (
       <section
         id="estimate-form"
-        className="scroll-mt-20 relative bg-brand-base py-24 overflow-hidden"
+        className="scroll-mt-20 relative bg-page py-24 overflow-hidden"
       >
         <div className="max-w-2xl mx-auto px-6 md:px-16 flex flex-col items-center text-center">
-          <CheckCircle className="text-brand-accent mb-6" size={48} />
+          <CheckCircle className="text-orange-700 mb-6" size={48} />
           <h2
             className="text-4xl font-bold text-text-primary mb-4"
             style={{ fontFamily: "var(--font-rajdhani)" }}
@@ -166,13 +166,13 @@ export default function EstimateForm({
     <section
       id="estimate-form"
       ref={sectionRef}
-      className="scroll-mt-24 relative bg-brand-base py-24 overflow-hidden"
+      className="scroll-mt-24 relative bg-page py-24 overflow-hidden"
     >
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,200,255,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(239,107,77,0.04) 0%, transparent 70%)",
         }}
         aria-hidden
       />
@@ -187,7 +187,7 @@ export default function EstimateForm({
         <div className="flex flex-col items-center text-center mb-12">
           {/* Cable label tag — FORM-INIT identifier */}
           <div className="inline-flex items-center gap-1 mb-4 border border-brand-accent/40 bg-brand-accent/5 px-2 py-0.5 rounded-xs" aria-hidden="true">
-            <span className="text-brand-accent/80 font-mono text-[10px] tracking-widest uppercase">
+            <span className="text-orange-700/80 font-mono text-[10px] tracking-widest uppercase">
               FORM-INIT / NO OBLIGATION
             </span>
           </div>
@@ -231,7 +231,7 @@ export default function EstimateForm({
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="John Smith"
-                className={`${inputClass} ${errors.name ? "border-red-500/50" : "border-white/5"}`}
+                className={`${inputClass} ${errors.name ? "border-red-500/50" : "border-slate-200"}`}
                 style={{ fontFamily: "var(--font-dm-sans)" }}
               />
               {errors.name && (
@@ -248,7 +248,7 @@ export default function EstimateForm({
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="(555) 000-0000"
-                className={`${inputClass} ${errors.phone ? "border-red-500/50" : "border-white/5"}`}
+                className={`${inputClass} ${errors.phone ? "border-red-500/50" : "border-slate-200"}`}
                 style={{ fontFamily: "var(--font-dm-sans)" }}
               />
               {errors.phone && (
@@ -266,7 +266,7 @@ export default function EstimateForm({
               value={formData.email}
               onChange={handleChange}
               placeholder="john@example.com"
-              className={`${inputClass} ${errors.email ? "border-red-500/50" : "border-white/5"}`}
+              className={`${inputClass} ${errors.email ? "border-red-500/50" : "border-slate-200"}`}
               style={{ fontFamily: "var(--font-dm-sans)" }}
             />
             {errors.email && (
@@ -283,7 +283,7 @@ export default function EstimateForm({
               value={formData.address}
               onChange={handleChange}
               placeholder="123 Main St, City, State"
-              className={`${inputClass} ${errors.address ? "border-red-500/50" : "border-white/5"}`}
+              className={`${inputClass} ${errors.address ? "border-red-500/50" : "border-slate-200"}`}
               style={{ fontFamily: "var(--font-dm-sans)" }}
             />
             {errors.address && (
@@ -298,7 +298,7 @@ export default function EstimateForm({
               name="serviceType"
               value={formData.serviceType}
               onChange={handleChange}
-              className={`${inputClass} ${errors.serviceType ? "border-red-500/50" : "border-white/5"}`}
+              className={`${inputClass} ${errors.serviceType ? "border-red-500/50" : "border-slate-200"}`}
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
               <option value="" disabled>
@@ -329,7 +329,7 @@ export default function EstimateForm({
               onChange={handleChange}
               placeholder="Tell us about your property, any specific concerns, or questions..."
               rows={4}
-              className={`${inputClass} border-white/5 resize-none`}
+              className={`${inputClass} border-slate-200 resize-none`}
               style={{ fontFamily: "var(--font-dm-sans)" }}
             />
           </div>
@@ -341,7 +341,7 @@ export default function EstimateForm({
           <button
             type="submit"
             disabled={isSubmitting}
-            className="group flex items-center justify-center gap-3 bg-brand-accent text-brand-base font-bold px-8 py-4 rounded-sm text-sm uppercase tracking-widest hover:bg-white transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed mt-2"
+            className="group flex items-center justify-center gap-3 bg-brand-accent text-brand-base font-bold px-8 py-4 rounded-sm text-sm uppercase tracking-widest hover:bg-brand-base hover:text-white transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed mt-2"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             {isSubmitting ? (
@@ -351,7 +351,7 @@ export default function EstimateForm({
                   {[0, 1, 2].map((i) => (
                     <span
                       key={i}
-                      className="w-1 h-1 rounded-full bg-brand-base animate-bounce"
+                      className="w-1 h-1 rounded-full bg-page animate-bounce"
                       style={{ animationDelay: `${i * 0.15}s` }}
                     />
                   ))}

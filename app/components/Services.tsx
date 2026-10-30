@@ -130,14 +130,14 @@ export default function Services({ services }: { services: Service[] }) {
     <section
       id="services"
       ref={sectionRef}
-      className="scroll-mt-20 relative bg-brand-surface py-24 overflow-hidden"
+      className="scroll-mt-20 relative bg-page-alt py-24 overflow-hidden"
     >
       {/* Atmospheric glow */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,200,255,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(239,107,77,0.04) 0%, transparent 70%)",
         }}
         aria-hidden
       />
@@ -183,7 +183,7 @@ export default function Services({ services }: { services: Service[] }) {
       <div className="max-w-6xl mx-auto px-6 md:px-16 flex flex-col items-center text-center">
         {/* Section header with cable label tag */}
         <div className="inline-flex items-center gap-1 mb-4 border border-brand-accent/40 bg-brand-accent/5 px-2 py-0.5 rounded-xs" aria-hidden="true">
-          <span className="text-brand-accent/80 font-mono text-[10px] tracking-widest uppercase">
+          <span className="text-orange-700/80 font-mono text-[10px] tracking-widest uppercase">
             WHAT WE OFFER
           </span>
         </div>
@@ -211,7 +211,7 @@ export default function Services({ services }: { services: Service[] }) {
             <motion.div key={service._id} variants={itemVariants}>
               <div
                 ref={(el) => { cardRefs.current[index] = el; }}
-                className="group p-8 rounded-sm border border-white/5 hover:border-brand-accent/20 bg-brand-card hover:bg-brand-card/80 transition-all duration-300 h-full
+                className="group p-8 rounded-sm border border-slate-200 hover:border-brand-accent/20 bg-white hover:shadow-lg hover:shadow-slate-900/10 transition-all duration-300 h-full
                            border-l-2 border-l-brand-accent/20 md:border-l md:border-l-white/5 md:hover:border-l-brand-accent/20"
               >
                 {/* RJ45 port symbol + port identifier */}
@@ -224,20 +224,20 @@ export default function Services({ services }: { services: Service[] }) {
                         stroke="#EF6B4D" strokeOpacity="0.7" strokeWidth="0.8"/>
                     ))}
                   </svg>
-                  <span className="font-mono text-[9px] tracking-widest text-brand-accent/70 uppercase">
+                  <span className="font-mono text-[9px] tracking-widest text-orange-700/70 uppercase">
                     {portLabel(index)}
                   </span>
                 </div>
 
                 <Link
                   href={`/services/${service.slug}`}
-                  className="inline-block text-brand-accent text-xs uppercase tracking-widest bg-brand-accent/10 px-2.5 py-0.5 rounded-sm mb-4 hover:underline hover:opacity-80 transition-opacity duration-200"
+                  className="inline-block text-orange-700 text-xs uppercase tracking-widest bg-brand-accent/10 px-2.5 py-0.5 rounded-sm mb-4 hover:underline hover:opacity-80 transition-opacity duration-200"
                   style={{ fontFamily: "var(--font-rajdhani)" }}
                 >
                   {service.title}
                 </Link>
                 {service.icon && (
-                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand-accent/10 text-brand-accent mb-4 group-hover:bg-brand-accent/20 transition-colors duration-300 text-xl">
+                  <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand-accent/10 text-orange-700 mb-4 group-hover:bg-brand-accent/20 transition-colors duration-300 text-xl">
                     {service.icon}
                   </span>
                 )}

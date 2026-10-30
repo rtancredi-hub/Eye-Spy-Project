@@ -45,14 +45,14 @@ export default function CTA({ settings }: { settings: SiteSettings }) {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-brand-base py-32 overflow-hidden"
+      className="relative bg-page py-32 overflow-hidden"
     >
       {/* Atmospheric glow */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 70% at 50% 50%, rgba(0,180,255,0.07) 0%, transparent 70%)",
+            "radial-gradient(ellipse 80% 70% at 50% 50%, rgba(239,107,77,0.07) 0%, transparent 70%)",
         }}
         aria-hidden
       />
@@ -112,7 +112,7 @@ export default function CTA({ settings }: { settings: SiteSettings }) {
       <div className="absolute top-6 left-6 w-10 h-10 border-l border-t border-brand-accent/40" />
       <div className="absolute top-6 left-6 mt-1 ml-1">
         <div className="inline-flex items-center gap-1 border border-brand-accent/40 bg-brand-accent/5 px-1.5 py-px rounded-xs">
-          <span className="text-brand-accent/70 font-mono text-[8px] tracking-widest uppercase">PORT A</span>
+          <span className="text-orange-700/70 font-mono text-[8px] tracking-widest uppercase">PORT A</span>
         </div>
       </div>
 
@@ -120,7 +120,7 @@ export default function CTA({ settings }: { settings: SiteSettings }) {
       <div className="absolute top-6 right-6 w-10 h-10 border-r border-t border-brand-accent/40" />
       <div className="absolute top-6 right-6 mt-1 mr-1 flex justify-end">
         <div className="inline-flex items-center gap-1 border border-brand-accent/40 bg-brand-accent/5 px-1.5 py-px rounded-xs">
-          <span className="text-brand-accent/70 font-mono text-[8px] tracking-widest uppercase">PORT B</span>
+          <span className="text-orange-700/70 font-mono text-[8px] tracking-widest uppercase">PORT B</span>
         </div>
       </div>
 
@@ -136,7 +136,7 @@ export default function CTA({ settings }: { settings: SiteSettings }) {
           variants={variants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="text-brand-accent text-xs uppercase tracking-widest mb-6"
+          className="text-orange-700 text-xs uppercase tracking-widest mb-6"
           style={{ fontFamily: "var(--font-rajdhani)" }}
         >
           Get Started Today
@@ -185,7 +185,7 @@ export default function CTA({ settings }: { settings: SiteSettings }) {
         >
           <button
             onClick={scrollToForm}
-            className="group flex items-center gap-3 bg-brand-accent text-brand-base font-bold px-10 py-4 rounded-sm text-sm uppercase tracking-widest hover:bg-white transition-colors duration-200"
+            className="group flex items-center gap-3 bg-brand-accent text-brand-base font-bold px-10 py-4 rounded-sm text-sm uppercase tracking-widest hover:bg-brand-base hover:text-white transition-colors duration-200"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             Get a Free Estimate

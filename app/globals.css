@@ -13,6 +13,8 @@
   --color-brand-base: var(--brand-bg-base);
   --color-brand-surface: var(--brand-bg-surface);
   --color-brand-card: var(--brand-bg-card);
+  --color-page: var(--page-bg);
+  --color-page-alt: var(--page-bg-alt);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   /* ── Brand text colors ──────────────────────────────────── */
@@ -72,6 +74,12 @@
   --brand-bg-surface: #070f1e;
   --brand-bg-card: #0a1628;
 
+  /* ── Page Backgrounds (light theme) ─────────────────────────
+   * The site body is light; navbar and footer stay dark (.theme-dark).
+   * bg-page = main sections, bg-page-alt = alternating sections. */
+  --page-bg: #f6f5f2;
+  --page-bg-alt: #ecebe6;
+
   /* ── Brand Text Colors ──────────────────────────────────────────────────────
    * Change these values to globally update every text color on the site.
    * Each variable maps to a Tailwind utility: e.g. --text-primary → text-text-primary
@@ -99,12 +107,12 @@
    * --text-error     : Form validation error messages (name, phone, email,
    *                    address, service type fields). Keep high-visibility.
    * ─────────────────────────────────────────────────────────────────────────── */
-  --text-primary: #ffffff;
-  --text-secondary: #bec9d5;
-  --text-muted: #64748b;
-  --text-subtle: #475569;
-  --text-nav: #cbd5e1;
-  --text-error: #f87171;
+  --text-primary: #050d1a;
+  --text-secondary: #334155;
+  --text-muted: #475569;
+  --text-subtle: #64748b;
+  --text-nav: #334155;
+  --text-error: #dc2626;
 
   /* ── Font Weight Scale ──────────────────────────────────── */
   --font-weight-normal: 450;
@@ -128,11 +136,9 @@
   --font-size-7xl: 4.5rem; /* 72px */
   --font-size-8xl: 6rem; /* 96px */
 
-  /* Canvas background — the whole site is dark-themed and never applies
-     the shadcn .dark class, so this must be the brand dark color (not
-     shadcn's white default): overscroll bounce and safe-area insets on
-     mobile paint this color, and it was showing as a white bar. */
-  --background: var(--brand-bg-base);
+  /* Canvas background — the light page color, so overscroll bounce and
+     safe-area insets on mobile match the page. */
+  --background: var(--page-bg);
   --foreground: var(--text-primary);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -164,6 +170,17 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+}
+
+/* Dark islands on the light site (navbar, footer): restores the original
+   dark-theme text colors for everything inside. */
+.theme-dark {
+  --text-primary: #ffffff;
+  --text-secondary: #bec9d5;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+  --text-nav: #cbd5e1;
+  --text-error: #f87171;
 }
 
 .dark {

@@ -87,7 +87,7 @@ export default async function Home() {
   };
 
   return (
-    <main className="bg-brand-base">
+    <main className="bg-page">
       {faqPageSchema && <JsonLd schema={faqPageSchema} />}
       <JsonLd schema={howToSchema} />
       <Hero
@@ -97,31 +97,31 @@ export default async function Home() {
         heroHeadingAccent={homePage?.heroHeadingAccent}
         heroSubheading={homePage?.heroSubheading}
       />
-      <CableSeparator variant="patch-panel" topColor="#050d1a" bottomColor="#070f1e" />
+      <CableSeparator variant="patch-panel" topColor="#f6f5f2" bottomColor="#ecebe6" />
       <SocialProof settings={settings} />
-      <CableSeparator variant="switch" topColor="#070f1e" bottomColor="#070f1e" />
+      <CableSeparator variant="switch" topColor="#ecebe6" bottomColor="#ecebe6" />
       <Benefits
         benefits={homePage?.benefits}
         eyebrow={homePage?.benefitsEyebrow}
         heading={homePage?.benefitsHeading}
         subheading={homePage?.benefitsSubheading}
       />
-      <CableSeparator variant="cable-tray" topColor="#070f1e" bottomColor="#070f1e" />
+      <CableSeparator variant="cable-tray" topColor="#ecebe6" bottomColor="#ecebe6" />
       <Services services={services} />
-      <CableSeparator variant="router" topColor="#070f1e" bottomColor="#050d1a" />
+      <CableSeparator variant="router" topColor="#ecebe6" bottomColor="#f6f5f2" />
       <HowItWorks
         steps={homePage?.howItWorksSteps}
         eyebrow={homePage?.howItWorksEyebrow}
         heading={homePage?.howItWorksHeading}
         subheading={homePage?.howItWorksSubheading}
       />
-      <CableSeparator variant="conduit" topColor="#050d1a" bottomColor="#070f1e" />
+      <CableSeparator variant="conduit" topColor="#f6f5f2" bottomColor="#ecebe6" />
       <Testimonials testimonials={testimonials} />
-      <CableSeparator variant="patch-panel" label="FEED-RISER" topColor="#070f1e" bottomColor="#050d1a" />
+      <CableSeparator variant="patch-panel" label="FEED-RISER" topColor="#ecebe6" bottomColor="#f6f5f2" />
       <CTA settings={settings} />
-      <CableSeparator variant="switch" label="SW-02" topColor="#050d1a" bottomColor="#070f1e" />
+      <CableSeparator variant="switch" label="SW-02" topColor="#f6f5f2" bottomColor="#ecebe6" />
       <FAQ items={faqItems} />
-      <CableSeparator variant="conduit" label="TERM-BLOCK" topColor="#070f1e" bottomColor="#050d1a" />
+      <CableSeparator variant="conduit" label="TERM-BLOCK" topColor="#ecebe6" bottomColor="#f6f5f2" />
       <EstimateForm services={services} />
     </main>
   );

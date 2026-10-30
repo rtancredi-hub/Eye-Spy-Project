@@ -11,7 +11,10 @@
 // useEffect: runs code AFTER the component appears on screen (good for browser APIs)
 // useRef: gives you a direct reference to a real DOM element (like a canvas or div)
 import { useEffect, useRef } from "react";
-import { brandColors, rgba } from "../config/colors";
+import { rgba } from "../config/colors";
+
+// Faint navy grid lines read on the light page background.
+const gridNavy = { r: 5, g: 13, b: 26 };
 
 // Framer Motion is an animation library.
 // "motion" is a special version of HTML elements (motion.div, motion.h1, etc.)
@@ -107,7 +110,7 @@ export default function Hero({
       // ── Draw the grid lines ──────────────────────────────────────────────
       // strokeStyle sets the color of lines. rgba() = red, green, blue, alpha(opacity).
       // 0.04 alpha means very faint — you barely see it, but it adds texture.
-      ctx.strokeStyle = rgba(brandColors.glowCyan, 0.04);
+      ctx.strokeStyle = rgba(gridNavy, 0.06);
       ctx.lineWidth = 1;
 
       const spacing = 48; // pixels between each grid line
@@ -145,9 +148,9 @@ export default function Hero({
         0,
         (offset % canvas.height) + 40, // gradient ends 40px below the center point
       );
-      grad.addColorStop(0, rgba(brandColors.glowCyan, 0)); // fully transparent at top
-      grad.addColorStop(0.5, rgba(brandColors.glowCyan, 0.035)); // very faint cyan at center
-      grad.addColorStop(1, rgba(brandColors.glowCyan, 0)); // fully transparent at bottom
+      grad.addColorStop(0, rgba(gridNavy, 0)); // fully transparent at top
+      grad.addColorStop(0.5, rgba(gridNavy, 0.04)); // very faint navy at center
+      grad.addColorStop(1, rgba(gridNavy, 0)); // fully transparent at bottom
 
       ctx.fillStyle = grad;
       // Draw a rectangle spanning the full width, 80px tall, centered on offset position
@@ -245,8 +248,8 @@ export default function Hero({
     // "overflow-hidden" — clips children that extend beyond the edges (like the blurred orb)
     //   so they don't create unwanted scrollbars.
     // "flex flex-col justify-center" — centers the main content vertically.
-    // "bg-brand-base" — custom dark navy color (square brackets let you use any CSS value).
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-brand-base pt-20">
+    // "bg-page" — custom dark navy color (square brackets let you use any CSS value).
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-page pt-20">
       {/* ── BACKGROUND LAYER 1: Radial glow ──────────────────────────────────
           A decorative div with no visible content — just a background gradient effect.
           "pointer-events-none" — this element won't block any mouse clicks or touch events.
@@ -259,7 +262,7 @@ export default function Hero({
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 50% 20%, rgba(0,180,255,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 80% 60% at 50% 20%, rgba(239,107,77,0.04) 0%, transparent 70%)",
         }}
       />
       {/* ── BACKGROUND LAYER 2: Animated canvas grid ─────────────────────────
@@ -314,7 +317,7 @@ export default function Hero({
           variants={fadeUp}
           initial="hidden"
           animate="visible"
-          className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border border-brand-accent/25 bg-brand-accent/5 text-brand-accent text-xs uppercase tracking-widest"
+          className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border border-brand-accent/25 bg-brand-accent/5 text-orange-700 text-xs uppercase tracking-widest"
           style={{ fontFamily: "var(--font-rajdhani)" }}
         >
           {/* Pulsing dot — w-1.5 h-1.5 = 6x6px circle, animate-pulse is a
@@ -360,7 +363,7 @@ export default function Hero({
 
         {/* ── SUBHEADLINE ─────────────────────────────────────────────────────
             custom={2} → delay = 2 * 0.13 = 260ms (animates in third)
-            "text-slate-400" — muted grey, creates visual hierarchy below headline.
+            "text-slate-600" — muted grey, creates visual hierarchy below headline.
             "max-w-2xl" — caps width at 672px so text doesn't stretch too wide.
             "leading-relaxed" — looser line height (1.625) for paragraph readability.
         */}
@@ -390,11 +393,11 @@ export default function Hero({
           {/* Primary CTA — solid filled button.
               "group" is a Tailwind feature: when you add "group" to a parent,
               child elements can respond to the parent's hover state using "group-hover:".
-              hover:bg-white changes background on hover.
+              hover:bg-brand-base hover:text-white changes background on hover.
               transition-colors duration-200 = smooth 200ms color transition. */}
           <button
             onClick={scrollToForm}
-            className="group flex items-center gap-3 bg-brand-accent text-brand-base font-bold px-8 py-4 rounded-sm text-sm uppercase tracking-widest hover:bg-white transition-colors duration-200"
+            className="group flex items-center gap-3 bg-brand-accent text-brand-base font-bold px-8 py-4 rounded-sm text-sm uppercase tracking-widest hover:bg-brand-base hover:text-white transition-colors duration-200"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             Get a Free Estimate
@@ -438,14 +441,14 @@ export default function Hero({
               className="group flex items-center gap-2 px-5 py-3 rounded-sm border border-brand-accent/20 bg-brand-accent/5 hover:bg-brand-accent/10 hover:border-brand-accent/40 transition-all duration-200 cursor-pointer"
             >
               <span
-                className="text-sm text-brand-accent uppercase tracking-widest font-semibold"
+                className="text-sm text-orange-700 uppercase tracking-widest font-semibold"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 {service.title}
               </span>
               <ArrowRight
                 size={14}
-                className="text-brand-accent/60 group-hover:translate-x-0.5 transition-transform duration-200"
+                className="text-orange-700/60 group-hover:translate-x-0.5 transition-transform duration-200"
               />
             </button>
           ))}

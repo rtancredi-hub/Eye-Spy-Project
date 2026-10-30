@@ -80,14 +80,14 @@ export default function SocialProof({ settings }: { settings: SiteSettings }) {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-brand-surface overflow-hidden py-24"
+      className="relative bg-page-alt overflow-hidden py-24"
     >
       {/* Atmospheric glow */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,200,255,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(239,107,77,0.04) 0%, transparent 70%)",
         }}
         aria-hidden
       />
@@ -115,29 +115,29 @@ export default function SocialProof({ settings }: { settings: SiteSettings }) {
             className="inline-flex items-center gap-1 mb-6 border border-brand-accent/40 bg-brand-accent/5 px-2 py-0.5 rounded-xs"
           >
             <span
-              className="text-brand-accent/80 font-mono text-[10px] tracking-widest uppercase"
+              className="text-orange-700/80 font-mono text-[10px] tracking-widest uppercase"
             >
               STATS / CREDENTIALS
             </span>
           </motion.div>
 
           {/* Stats grid — gap-px border trick */}
-          <div className="grid grid-cols-3 gap-px bg-white/5 rounded-sm overflow-hidden">
+          <div className="grid grid-cols-3 gap-px bg-slate-200 rounded-sm overflow-hidden">
             {stats.map((stat) => (
               <motion.div
                 key={stat.label}
                 variants={itemVariants}
-                className="group bg-brand-surface hover:bg-brand-card transition-colors duration-300 px-6 py-8 flex flex-col items-center gap-3
+                className="group bg-page-alt hover:bg-white transition-colors duration-300 px-6 py-8 flex flex-col items-center gap-3
                            border-l-2 border-brand-accent/20 md:border-l-0"
               >
                 {/* Port label — P-touch identifier above icon */}
                 <span
-                  className="font-mono text-[9px] tracking-widest text-brand-accent/70 uppercase"
+                  className="font-mono text-[9px] tracking-widest text-orange-700/70 uppercase"
                 >
                   {stat.port}
                 </span>
 
-                <span className="text-brand-accent opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="text-orange-700 opacity-70 group-hover:opacity-100 transition-opacity duration-300">
                   {stat.icon}
                 </span>
 
@@ -202,7 +202,7 @@ export default function SocialProof({ settings }: { settings: SiteSettings }) {
             className="inline-flex items-center gap-1 mb-2 border border-brand-accent/40 bg-brand-accent/5 px-2 py-0.5 rounded-xs"
           >
             <span
-              className="text-brand-accent/80 font-mono text-[10px] tracking-widest uppercase"
+              className="text-orange-700/80 font-mono text-[10px] tracking-widest uppercase"
             >
               CREDENTIALS
             </span>
@@ -212,17 +212,17 @@ export default function SocialProof({ settings }: { settings: SiteSettings }) {
             <motion.div
               key={cert.label}
               variants={itemVariants}
-              className="group flex items-center gap-4 px-6 py-4 rounded-sm border border-white/5 hover:border-brand-accent/20 hover:bg-brand-accent/5 transition-all duration-300 cursor-default
+              className="group flex items-center gap-4 px-6 py-4 rounded-sm border border-slate-200 hover:border-brand-accent/20 hover:bg-brand-accent/5 transition-all duration-300 cursor-default
                          border-l-2 border-l-brand-accent/20 md:border-l"
             >
               {/* Port number badge */}
               <span
-                className="font-mono text-[8px] tracking-widest text-brand-accent/60 uppercase shrink-0 hidden sm:block"
+                className="font-mono text-[8px] tracking-widest text-orange-700/60 uppercase shrink-0 hidden sm:block"
               >
                 P{String(i + 1).padStart(2, "0")}
               </span>
 
-              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-accent/10 text-brand-accent shrink-0 group-hover:bg-brand-accent/20 transition-colors duration-300">
+              <span className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-accent/10 text-orange-700 shrink-0 group-hover:bg-brand-accent/20 transition-colors duration-300">
                 {cert.icon}
               </span>
 

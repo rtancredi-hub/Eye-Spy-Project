@@ -54,10 +54,8 @@ export default function Navbar({ settings }: { settings: SiteSettings }) {
         initial={{ opacity: 0, y: -16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-brand-base/95 backdrop-blur-sm border-b border-white/5"
-            : "bg-transparent border-b border-transparent"
+        className={`theme-dark fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#0f1d33]/95 backdrop-blur-sm border-b border-brand-accent/40 ${
+          scrolled ? "shadow-lg shadow-black/40" : ""
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-16 flex items-center justify-between h-20 md:h-24">
@@ -134,7 +132,7 @@ export default function Navbar({ settings }: { settings: SiteSettings }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-brand-base/98 backdrop-blur-sm flex flex-col pt-20 px-6 md:hidden"
+            className="theme-dark fixed inset-0 z-40 bg-brand-base/98 backdrop-blur-sm flex flex-col pt-20 px-6 md:hidden"
           >
             {/* Mobile nav links */}
             <nav className="flex flex-col gap-1 mt-8">

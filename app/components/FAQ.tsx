@@ -33,14 +33,14 @@ export default function FAQ({ items }: { items: FaqItem[] }) {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-brand-surface py-24 overflow-hidden"
+      className="relative bg-page-alt py-24 overflow-hidden"
     >
       {/* Atmospheric glow */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,200,255,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(239,107,77,0.04) 0%, transparent 70%)",
         }}
         aria-hidden
       />
@@ -49,7 +49,7 @@ export default function FAQ({ items }: { items: FaqItem[] }) {
         <div className="mb-14 flex flex-col items-center text-center">
           {/* Cable label tag */}
           <div className="inline-flex items-center gap-1 mb-4 border border-brand-accent/40 bg-brand-accent/5 px-2 py-0.5 rounded-xs" aria-hidden="true">
-            <span className="text-brand-accent/80 font-mono text-[10px] tracking-widest uppercase">
+            <span className="text-orange-700/80 font-mono text-[10px] tracking-widest uppercase">
               COMMON QUESTIONS
             </span>
           </div>

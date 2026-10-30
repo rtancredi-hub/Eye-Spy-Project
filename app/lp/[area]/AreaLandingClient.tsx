@@ -34,7 +34,7 @@ const DEFAULT_INCLUDES = [
 // ─── MINIMAL HEADER ───────────────────────────────────────────────────────────
 function LandingHeader({ settings }: { settings: SiteSettings }) {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-brand-base/95 backdrop-blur-sm border-b border-white/5">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0f1d33]/95 backdrop-blur-sm border-b border-brand-accent/40 shadow-lg shadow-black/40">
       <div className="max-w-6xl mx-auto px-6 md:px-16 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image
@@ -76,13 +76,13 @@ function LandingFooter({ settings }: { settings: SiteSettings }) {
         <div className="flex items-center gap-6">
           <a
             href="/privacy"
-            className="text-slate-600 text-xs hover:text-white transition-colors duration-200"
+            className="text-slate-400 text-xs hover:text-white transition-colors duration-200"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             Privacy Policy
           </a>
           <span
-            className="text-slate-600 text-xs"
+            className="text-slate-400 text-xs"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             © {new Date().getFullYear()} {settings.siteName}. All rights reserved.
@@ -131,16 +131,16 @@ export default function AreaLandingClient({
     return (
       <>
         <LandingHeader settings={settings} />
-        <main className="bg-brand-base min-h-screen flex items-center justify-center">
+        <main className="bg-page min-h-screen flex items-center justify-center">
           <div className="text-center px-6">
             <h1
-              className="text-4xl font-bold text-white mb-4"
+              className="text-4xl font-bold text-brand-base mb-4"
               style={{ fontFamily: "var(--font-rajdhani)" }}
             >
               Area Not Found
             </h1>
             <p
-              className="text-slate-400 mb-8"
+              className="text-slate-600 mb-8"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
               We couldn't find that service area. View all areas we serve below.
@@ -150,7 +150,7 @@ export default function AreaLandingClient({
                 <a
                   key={a.slug}
                   href={`/lp/${a.slug}`}
-                  className="px-4 py-2 border border-white/10 text-slate-400 hover:text-white hover:border-brand-accent/30 rounded-sm text-sm transition-all duration-200"
+                  className="px-4 py-2 border border-slate-200 text-slate-600 hover:text-brand-base hover:border-brand-accent/30 rounded-sm text-sm transition-all duration-200"
                   style={{ fontFamily: "var(--font-rajdhani)" }}
                 >
                   {a.name}
@@ -168,14 +168,14 @@ export default function AreaLandingClient({
     <>
       <LandingHeader settings={settings} />
 
-      <main className="bg-brand-base pt-16">
+      <main className="bg-page pt-16">
         {/* ── HERO + FORM ─────────────────────────────────────────────── */}
         <section className="relative min-h-screen flex items-center overflow-hidden">
           <div
             className="pointer-events-none absolute inset-0"
             style={{
               background:
-                "radial-gradient(ellipse 80% 80% at 20% 50%, rgba(0,180,255,0.07) 0%, transparent 60%)",
+                "radial-gradient(ellipse 80% 80% at 20% 50%, rgba(239,107,77,0.07) 0%, transparent 60%)",
             }}
             aria-hidden
           />
@@ -189,7 +189,7 @@ export default function AreaLandingClient({
                 variants={fadeUp}
                 initial="hidden"
                 animate="visible"
-                className="flex items-center gap-2 text-brand-accent text-xs uppercase tracking-widest"
+                className="flex items-center gap-2 text-orange-700 text-xs uppercase tracking-widest"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 <MapPin size={12} />
@@ -201,7 +201,7 @@ export default function AreaLandingClient({
                 variants={fadeUp}
                 initial="hidden"
                 animate="visible"
-                className="text-5xl md:text-6xl font-bold text-white leading-tight"
+                className="text-5xl md:text-6xl font-bold text-brand-base leading-tight"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 Security Systems for {areaData.name}
@@ -223,7 +223,7 @@ export default function AreaLandingClient({
                 variants={fadeUp}
                 initial="hidden"
                 animate="visible"
-                className="text-slate-400 text-lg leading-relaxed max-w-lg"
+                className="text-slate-600 text-lg leading-relaxed max-w-lg"
                 style={{ fontFamily: "var(--font-dm-sans)" }}
               >
                 {areaData.description}
@@ -240,10 +240,10 @@ export default function AreaLandingClient({
                   <li key={item} className="flex items-center gap-3">
                     <CheckCircle
                       size={16}
-                      className="text-brand-accent shrink-0"
+                      className="text-orange-700 shrink-0"
                     />
                     <span
-                      className="text-slate-300 text-sm"
+                      className="text-slate-700 text-sm"
                       style={{ fontFamily: "var(--font-dm-sans)" }}
                     >
                       {item}
@@ -262,11 +262,11 @@ export default function AreaLandingClient({
                 {trustBadges.map((badge) => (
                   <div
                     key={badge.label}
-                    className="flex items-center gap-2 px-3 py-2 rounded-sm border border-white/10 bg-white/5"
+                    className="flex items-center gap-2 px-3 py-2 rounded-sm border border-slate-200 bg-slate-200"
                   >
-                    <span className="text-brand-accent">{badge.icon}</span>
+                    <span className="text-orange-700">{badge.icon}</span>
                     <span
-                      className="text-slate-300 text-xs"
+                      className="text-slate-700 text-xs"
                       style={{ fontFamily: "var(--font-rajdhani)" }}
                     >
                       {badge.label}
@@ -285,23 +285,23 @@ export default function AreaLandingClient({
                 delay: 0.3,
                 ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
               }}
-              className="bg-brand-surface border border-white/10 rounded-sm p-8"
+              className="bg-white border-2 border-brand-accent rounded-sm p-8 shadow-xl shadow-slate-900/10"
             >
               <div className="mb-6">
                 <h2
-                  className="text-2xl font-bold text-white mb-1"
+                  className="text-2xl font-bold text-brand-base mb-1"
                   style={{ fontFamily: "var(--font-rajdhani)" }}
                 >
                   Free Estimate in {areaData.name}
                 </h2>
                 <p
-                  className="text-slate-500 text-sm"
+                  className="text-slate-600 text-sm"
                   style={{ fontFamily: "var(--font-dm-sans)" }}
                 >
                   We'll respond within 1 business day.
                 </p>
               </div>
-              <LPEstimateForm
+              <LPEstimateForm variant="light"
                 services={services}
                 successMessage={`we'll be in touch within 1 business day to schedule your free estimate in ${areaData.name}.`}
               />
@@ -310,7 +310,7 @@ export default function AreaLandingClient({
         </section>
 
         {/* ── STATS BAR ───────────────────────────────────────────────── */}
-        <section className="relative bg-brand-surface py-12 overflow-hidden">
+        <section className="relative bg-page-alt py-12 overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
           <div className="max-w-6xl mx-auto px-6 md:px-16">
@@ -323,13 +323,13 @@ export default function AreaLandingClient({
               ].map((stat) => (
                 <div key={stat.label} className="flex flex-col gap-1">
                   <span
-                    className="text-3xl font-bold text-white"
+                    className="text-3xl font-bold text-brand-base"
                     style={{ fontFamily: "var(--font-rajdhani)" }}
                   >
                     {stat.value}
                   </span>
                   <span
-                    className="text-xs uppercase tracking-widest text-slate-500"
+                    className="text-xs uppercase tracking-widest text-slate-600"
                     style={{ fontFamily: "var(--font-rajdhani)" }}
                   >
                     {stat.label}
@@ -341,12 +341,12 @@ export default function AreaLandingClient({
         </section>
 
         {/* ── TESTIMONIALS ────────────────────────────────────────────── */}
-        <section className="relative bg-brand-base py-20 overflow-hidden">
+        <section className="relative bg-page py-20 overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
           <div className="max-w-6xl mx-auto px-6 md:px-16">
             <p
-              className="text-brand-accent text-xs uppercase tracking-widest text-center mb-10"
+              className="text-orange-700 text-xs uppercase tracking-widest text-center mb-10"
               style={{ fontFamily: "var(--font-rajdhani)" }}
             >
               What {areaData.name} Customers Say
@@ -363,32 +363,32 @@ export default function AreaLandingClient({
               {testimonials.map((t) => (
                 <div
                   key={t.name}
-                  className="p-6 rounded-sm border border-white/5 bg-brand-surface flex flex-col gap-4"
+                  className="p-6 rounded-sm border border-slate-200 bg-page-alt flex flex-col gap-4"
                 >
                   <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
                         size={12}
-                        className="text-brand-accent fill-brand-accent"
+                        className="text-orange-700 fill-brand-accent"
                       />
                     ))}
                   </div>
                   <p
-                    className="text-slate-300 text-sm leading-relaxed flex-1"
+                    className="text-slate-700 text-sm leading-relaxed flex-1"
                     style={{ fontFamily: "var(--font-dm-sans)" }}
                   >
                     "{t.quote}"
                   </p>
                   <div>
                     <p
-                      className="text-white text-sm font-bold"
+                      className="text-brand-base text-sm font-bold"
                       style={{ fontFamily: "var(--font-rajdhani)" }}
                     >
                       {t.name}
                     </p>
                     <p
-                      className="text-slate-500 text-xs"
+                      className="text-slate-600 text-xs"
                       style={{ fontFamily: "var(--font-dm-sans)" }}
                     >
                       {t.location}
@@ -401,12 +401,12 @@ export default function AreaLandingClient({
         </section>
 
         {/* ── NEARBY AREAS ────────────────────────────────────────────── */}
-        <section className="relative bg-brand-surface py-16 overflow-hidden">
+        <section className="relative bg-page-alt py-16 overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
           <div className="max-w-6xl mx-auto px-6 md:px-16 flex flex-col items-center text-center gap-6">
             <p
-              className="text-brand-accent text-xs uppercase tracking-widest"
+              className="text-orange-700 text-xs uppercase tracking-widest"
               style={{ fontFamily: "var(--font-rajdhani)" }}
             >
               We Also Serve
@@ -418,10 +418,10 @@ export default function AreaLandingClient({
                   <a
                     key={nearby}
                     href={`/lp/${nearbyArea.slug}`}
-                    className="flex items-center gap-2 px-4 py-2 border border-white/10 text-slate-400 hover:text-white hover:border-brand-accent/30 rounded-sm text-sm transition-all duration-200"
+                    className="flex items-center gap-2 px-4 py-2 border border-slate-200 text-slate-600 hover:text-brand-base hover:border-brand-accent/30 rounded-sm text-sm transition-all duration-200"
                     style={{ fontFamily: "var(--font-rajdhani)" }}
                   >
-                    <MapPin size={12} className="text-brand-accent" />
+                    <MapPin size={12} className="text-orange-700" />
                     {nearby}
                   </a>
                 ) : null;
@@ -431,7 +431,7 @@ export default function AreaLandingClient({
         </section>
 
         {/* ── BOTTOM CTA ──────────────────────────────────────────────── */}
-        <section className="relative bg-brand-base py-20 overflow-hidden">
+        <section className="relative bg-page py-20 overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
           <div className="absolute top-6 left-6 w-8 h-8 border-l border-t border-brand-accent/20" />
           <div className="absolute top-6 right-6 w-8 h-8 border-r border-t border-brand-accent/20" />
@@ -440,19 +440,19 @@ export default function AreaLandingClient({
           <div className="max-w-2xl mx-auto px-6 md:px-16">
             <div className="text-center mb-10">
               <p
-                className="text-brand-accent text-xs uppercase tracking-widest mb-4"
+                className="text-orange-700 text-xs uppercase tracking-widest mb-4"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 Prefer to Talk First?
               </p>
               <h2
-                className="text-4xl font-bold text-white mb-4"
+                className="text-4xl font-bold text-brand-base mb-4"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 Call Us Directly
               </h2>
               <p
-                className="text-slate-400 leading-relaxed"
+                className="text-slate-600 leading-relaxed"
                 style={{ fontFamily: "var(--font-dm-sans)" }}
               >
                 Have questions about security systems in {areaData.name}? Give
@@ -460,7 +460,7 @@ export default function AreaLandingClient({
               </p>
               <TrackedLink
                 href={siteConfig.phoneHref}
-                className="inline-flex items-center gap-2 mt-6 text-brand-accent font-bold text-lg hover:text-white transition-colors duration-200"
+                className="inline-flex items-center gap-2 mt-6 text-orange-700 font-bold text-lg hover:text-brand-base transition-colors duration-200"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 <Phone size={18} />
@@ -475,14 +475,14 @@ export default function AreaLandingClient({
                   alt: img.alt,
                 }))}
             />
-            <div className="bg-brand-surface border border-white/10 rounded-sm p-8">
+            <div className="bg-white border-2 border-brand-accent rounded-sm p-8 shadow-xl shadow-slate-900/10">
               <h3
-                className="text-xl font-bold text-white mb-6"
+                className="text-xl font-bold text-brand-base mb-6"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 Or Request Your Free Estimate Online
               </h3>
-              <LPEstimateForm
+              <LPEstimateForm variant="light"
                 services={services}
                 successMessage={`we'll be in touch within 1 business day to schedule your free estimate in ${areaData.name}.`}
               />

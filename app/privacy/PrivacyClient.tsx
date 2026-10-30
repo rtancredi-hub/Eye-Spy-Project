@@ -127,7 +127,7 @@ We will respond to all privacy-related inquiries within 30 days.`,
   };
 
   return (
-    <main className="bg-brand-base">
+    <main className="bg-page">
       {/* ── HEADER ──────────────────────────────────────────────────────── */}
       <section className="relative pt-40 pb-16 overflow-hidden">
         <div
@@ -147,7 +147,7 @@ We will respond to all privacy-related inquiries within 30 days.`,
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="text-brand-accent text-xs uppercase tracking-widest mb-4"
+            className="text-orange-700 text-xs uppercase tracking-widest mb-4"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             Legal
@@ -157,7 +157,7 @@ We will respond to all privacy-related inquiries within 30 days.`,
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="text-5xl md:text-6xl font-bold text-white mb-4"
+            className="text-5xl md:text-6xl font-bold text-brand-base mb-4"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             Privacy Policy
@@ -167,7 +167,7 @@ We will respond to all privacy-related inquiries within 30 days.`,
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="text-slate-500 text-sm"
+            className="text-slate-600 text-sm"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             Last updated: {lastUpdated}
@@ -177,7 +177,7 @@ We will respond to all privacy-related inquiries within 30 days.`,
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="text-slate-400 mt-4 leading-relaxed"
+            className="text-slate-600 mt-4 leading-relaxed"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             {settings.siteName} ("we", "us", or "our") is committed to protecting
@@ -191,7 +191,7 @@ We will respond to all privacy-related inquiries within 30 days.`,
       {/* ── POLICY SECTIONS ─────────────────────────────────────────────── */}
       <section
         ref={contentRef}
-        className="relative bg-brand-surface py-16 overflow-hidden"
+        className="relative bg-page-alt py-16 overflow-hidden"
       >
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
@@ -211,13 +211,13 @@ We will respond to all privacy-related inquiries within 30 days.`,
               {/* Section number + title */}
               <div className="flex items-start gap-4">
                 <span
-                  className="text-brand-accent/40 text-xs font-bold mt-1 shrink-0"
+                  className="text-orange-700/40 text-xs font-bold mt-1 shrink-0"
                   style={{ fontFamily: "var(--font-rajdhani)" }}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h2
-                  className="text-xl font-bold text-white"
+                  className="text-xl font-bold text-brand-base"
                   style={{ fontFamily: "var(--font-rajdhani)" }}
                 >
                   {section.title}
@@ -229,7 +229,7 @@ We will respond to all privacy-related inquiries within 30 days.`,
 
               {/* Content — whitespace-pre-line preserves line breaks in the strings */}
               <p
-                className="text-slate-400 leading-relaxed whitespace-pre-line"
+                className="text-slate-600 leading-relaxed whitespace-pre-line"
                 style={{ fontFamily: "var(--font-dm-sans)" }}
               >
                 {section.content}
@@ -240,14 +240,14 @@ We will respond to all privacy-related inquiries within 30 days.`,
       </section>
 
       {/* ── DISCLAIMER ──────────────────────────────────────────────────── */}
-      <section className="relative bg-brand-base py-12 overflow-hidden">
+      <section className="relative bg-page py-12 overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
         <div className="max-w-3xl mx-auto px-6 md:px-16">
           <p
-            className="text-slate-600 text-xs leading-relaxed"
+            className="text-slate-500 text-xs leading-relaxed"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
-            <strong className="text-slate-500">Legal Disclaimer:</strong> This
+            <strong className="text-slate-600">Legal Disclaimer:</strong> This
             Privacy Policy is provided for informational purposes and represents
             our good-faith effort to comply with applicable New York state and
             federal privacy laws including the NY SHIELD Act. This policy does
