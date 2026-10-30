@@ -34,6 +34,22 @@ const DEFAULT_INCLUDES = [
   "No obligation — ever",
 ];
 
+// Short version of the homepage "Our Process" steps
+const NEXT_STEPS = [
+  {
+    title: "Request your free estimate",
+    body: "Fill out the form or call. We'll reach out within 1 business day.",
+  },
+  {
+    title: "Site survey & written scope",
+    body: "We walk the job site with your team and send a detailed scope of work before anything starts.",
+  },
+  {
+    title: "Install, test & sign-off",
+    body: "Clean, labeled, code-compliant runs — tested and documented at the final walkthrough.",
+  },
+];
+
 // ─── HEADER ───────────────────────────────────────────────────────────────────
 function LandingHeader({ settings }: { settings: SiteSettings }) {
   const trustItems = [
@@ -177,49 +193,54 @@ export default function ServiceLandingClient({
     <>
       <LandingHeader settings={settings} />
 
-      <main className="bg-brand-base pt-16">
+      {/* Light body (header, footer and mobile CTA bar stay dark) */}
+      <main className="bg-[#f6f5f2] pt-16">
         {/* ── HERO + FORM ─────────────────────────────────────────────── */}
         <section className="relative overflow-hidden">
-          <LPGridBackground />
-          <div
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(ellipse 80% 80% at 20% 50%, rgba(0,180,255,0.07) 0%, transparent 60%)",
-            }}
-            aria-hidden
-          />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
+          <LPGridBackground tone="light" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/30 to-transparent" />
 
-          {/* Mobile order: headline → form + reviews → checklist + badges.
-              Desktop: left column (headline, checklist) beside form + reviews. */}
-          <div className="relative max-w-6xl mx-auto px-6 md:px-16 py-10 lg:py-14 grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-[auto_1fr] gap-10 lg:gap-x-16 lg:gap-y-8 items-start content-start w-full">
-            <div className="flex flex-col gap-8 lg:col-start-1 lg:row-start-1">
+          {/* Mobile order: headline → form → reviews → checklist + badges → next steps.
+              Desktop: headline + reviews beside the form; checklist beside next steps below. */}
+          <div className="relative max-w-6xl mx-auto px-6 md:px-16 py-10 lg:pt-10 lg:pb-14 grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-[auto_1fr_auto] gap-10 lg:gap-x-16 lg:gap-y-6 items-start content-start w-full">
+            <div className="flex flex-col gap-8 lg:gap-6 lg:col-start-1 lg:row-start-1">
               <p
-                className="text-brand-accent text-xs uppercase tracking-widest"
+                className="text-orange-700 text-xs font-semibold uppercase tracking-widest"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 {eyebrow}
               </p>
 
               <h1
-                className="text-4xl md:text-5xl font-bold text-white leading-tight"
+                className="text-4xl md:text-5xl font-bold text-brand-base leading-tight"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 {page.heroHeading}
                 {page.heroHeadingAccent && (
                   <>
-                    <br />
-                                       <span className="inline-block text-brand-accent lg:bg-linear-to-r lg:from-brand-accent lg:via-brand-accent-light lg:to-brand-accent-lighter lg:bg-clip-text lg:text-transparent">
+                    <br className="max-sm:hidden" />
+                    {/* On phones the accent becomes the small line below, keeping
+                        the headline to 2 lines; it stays in the h1 for SEO. */}
+                    {/* Smaller on desktop so it fits one line and the reviews peek above the fold */}
+                    <span className="inline-block text-brand-accent max-sm:sr-only lg:text-3xl lg:mt-1">
                       {page.heroHeadingAccent}
                     </span>
                   </>
                 )}
               </h1>
+              {page.heroHeadingAccent && (
+                <p
+                  className="sm:hidden -mt-5 text-orange-700 text-sm font-bold uppercase tracking-widest"
+                  style={{ fontFamily: "var(--font-rajdhani)" }}
+                  aria-hidden
+                >
+                  {page.heroHeadingAccent}
+                </p>
+              )}
 
               {heroSubheading && (
                 <p
-                  className="text-slate-300 text-lg leading-relaxed max-w-lg"
+                  className="text-slate-700 text-lg leading-relaxed max-w-lg"
                   style={{ fontFamily: "var(--font-dm-sans)" }}
                 >
                   {heroSubheading}
@@ -227,44 +248,48 @@ export default function ServiceLandingClient({
               )}
             </div>
 
-            {/* Right — form card + reviews */}
+            {/* Right — form card */}
             <div
               className="flex flex-col gap-6 lg:col-start-2 lg:row-start-1 lg:row-span-2"
             >
               <div
                 id="estimate"
-                className="scroll-mt-20 bg-[#0c1a2e] border border-white/10 rounded-sm p-8"
+                className="scroll-mt-20 bg-white border-2 border-brand-accent rounded-sm p-8 shadow-xl shadow-slate-900/10"
               >
                 <div className="mb-6">
                   <p
-                    className="flex items-center gap-2 mb-3 text-emerald-400 text-xs uppercase tracking-widest"
+                    className="flex items-center gap-2 mb-3 text-emerald-700 text-xs font-semibold uppercase tracking-widest"
                     style={{ fontFamily: "var(--font-rajdhani)" }}
                   >
                     <span className="relative flex h-2 w-2">
-                      <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping motion-reduce:animate-none" />
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75 animate-ping motion-reduce:animate-none" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
                     </span>
                     Same-week site visits available
                   </p>
                   <h2
-                    className="text-2xl font-bold text-white mb-1"
+                    className="text-2xl font-bold text-brand-base mb-1"
                     style={{ fontFamily: "var(--font-rajdhani)" }}
                   >
                     {formHeading}
                   </h2>
                   <p
-                    className="text-slate-400 text-sm"
+                    className="text-slate-600 text-sm"
                     style={{ fontFamily: "var(--font-dm-sans)" }}
                   >
                     {formSubheading}
                   </p>
                 </div>
-                <LPEstimateForm services={services} defaultService={defaultService} idPrefix="lp-top" />
+                <LPEstimateForm services={services} defaultService={defaultService} idPrefix="lp-top" variant="light" />
               </div>
+            </div>
+
+            {/* Reviews — under the headline on desktop, under the form on phones */}
+            <div className="lg:col-start-1 lg:row-start-2">
               <LPTestimonialCarousel testimonials={testimonials} />
             </div>
 
-            <div className="flex flex-col gap-8 lg:col-start-1 lg:row-start-2">
+            <div className="flex flex-col gap-8 lg:col-start-1 lg:row-start-3">
               <ul
                 className="flex flex-col gap-3"
               >
@@ -272,7 +297,7 @@ export default function ServiceLandingClient({
                   <li key={item} className="flex items-center gap-3">
                     <CheckCircle size={16} className="text-brand-accent shrink-0" />
                     <span
-                      className="text-slate-300 text-sm"
+                      className="text-slate-700 text-sm"
                       style={{ fontFamily: "var(--font-dm-sans)" }}
                     >
                       {item}
@@ -287,11 +312,11 @@ export default function ServiceLandingClient({
                 {trustBadges.map((badge) => (
                   <div
                     key={badge.label}
-                    className="flex items-center gap-2 px-3 py-2 rounded-sm border border-white/10 bg-white/5"
+                    className="flex items-center gap-2 px-3 py-2 rounded-sm border border-brand-accent bg-white shadow-sm"
                   >
                     <span className="text-brand-accent">{badge.icon}</span>
                     <span
-                      className="text-slate-300 text-xs"
+                      className="text-brand-base text-xs font-semibold"
                       style={{ fontFamily: "var(--font-rajdhani)" }}
                     >
                       {badge.label}
@@ -300,40 +325,76 @@ export default function ServiceLandingClient({
                 ))}
               </div>
             </div>
+
+            {/* What happens after they submit — sits beside the bullets on desktop */}
+            <div className="lg:col-start-2 lg:row-start-3 bg-white border border-slate-200 rounded-sm p-6 shadow-lg shadow-slate-900/5">
+              <p
+                className="text-orange-700 text-xs font-semibold uppercase tracking-widest mb-5"
+                style={{ fontFamily: "var(--font-rajdhani)" }}
+              >
+                What Happens Next
+              </p>
+              <ol className="flex flex-col gap-5">
+                {NEXT_STEPS.map((step, i) => (
+                  <li key={step.title} className="flex gap-4">
+                    <span
+                      className="flex items-center justify-center shrink-0 w-8 h-8 rounded-full border-2 border-brand-accent text-brand-base text-sm font-bold"
+                      style={{ fontFamily: "var(--font-rajdhani)" }}
+                    >
+                      {i + 1}
+                    </span>
+                    <div>
+                      <p
+                        className="text-brand-base font-bold"
+                        style={{ fontFamily: "var(--font-rajdhani)" }}
+                      >
+                        {step.title}
+                      </p>
+                      <p
+                        className="text-slate-600 text-sm leading-relaxed"
+                        style={{ fontFamily: "var(--font-dm-sans)" }}
+                      >
+                        {step.body}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
         </section>
 
         {/* ── BOTTOM CTA ──────────────────────────────────────────────── */}
-        <section className="relative bg-brand-surface py-20 overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
-          <div className="absolute top-6 left-6 w-8 h-8 border-l border-t border-brand-accent/20" />
-          <div className="absolute top-6 right-6 w-8 h-8 border-r border-t border-brand-accent/20" />
-          <div className="absolute bottom-6 left-6 w-8 h-8 border-l border-b border-brand-accent/20" />
-          <div className="absolute bottom-6 right-6 w-8 h-8 border-r border-b border-brand-accent/20" />
+        <section className="relative bg-[#ecebe6] py-20 overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/30 to-transparent" />
+          <div className="absolute top-6 left-6 w-8 h-8 border-l border-t border-brand-accent/50" />
+          <div className="absolute top-6 right-6 w-8 h-8 border-r border-t border-brand-accent/50" />
+          <div className="absolute bottom-6 left-6 w-8 h-8 border-l border-b border-brand-accent/50" />
+          <div className="absolute bottom-6 right-6 w-8 h-8 border-r border-b border-brand-accent/50" />
 
           <div className="max-w-4xl mx-auto px-6 md:px-16">
             <div className="text-center mb-10 max-w-2xl mx-auto">
               <p
-                className="text-brand-accent text-xs uppercase tracking-widest mb-4"
+                className="text-orange-700 text-xs font-semibold uppercase tracking-widest mb-4"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 {bottomCtaEyebrow}
               </p>
               <h2
-                className="text-4xl font-bold text-white mb-4"
+                className="text-4xl font-bold text-brand-base mb-4"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 {bottomCtaHeading}
               </h2>
               <p
-                className="text-slate-400 leading-relaxed"
+                className="text-slate-700 leading-relaxed"
                 style={{ fontFamily: "var(--font-dm-sans)" }}
               >
                 {bottomCtaBody}
               </p>
               <TrackedLink
                 href={siteConfig.phoneHref}
-                className="inline-flex items-center gap-2 mt-6 text-brand-accent font-bold text-lg hover:text-white transition-colors duration-200"
+                className="inline-flex items-center gap-2 mt-6 text-orange-700 font-bold text-lg hover:text-brand-base transition-colors duration-200"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 <Phone size={18} />
@@ -349,14 +410,14 @@ export default function ServiceLandingClient({
                   alt: img.alt,
                 }))}
             />
-            <div className="max-w-2xl mx-auto bg-[#0c1a2e] border border-white/10 rounded-sm p-8">
+            <div className="max-w-2xl mx-auto bg-white border-2 border-brand-accent rounded-sm p-8 shadow-xl shadow-slate-900/10">
               <h3
-                className="text-xl font-bold text-white mb-6"
+                className="text-xl font-bold text-brand-base mb-6"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 Or Request Your Free Estimate Online
               </h3>
-              <LPEstimateForm services={services} defaultService={defaultService} idPrefix="lp-bottom" />
+              <LPEstimateForm services={services} defaultService={defaultService} idPrefix="lp-bottom" variant="light" />
             </div>
           </div>
         </section>

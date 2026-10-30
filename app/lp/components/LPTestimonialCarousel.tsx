@@ -39,7 +39,7 @@ export default function LPTestimonialCarousel({
 
   return (
     <div
-      className="bg-[#0c1a2e] border border-white/10 rounded-sm p-6"
+      className="bg-white border border-slate-200 rounded-sm p-6 shadow-lg shadow-slate-900/5"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       aria-roledescription="carousel"
@@ -47,7 +47,7 @@ export default function LPTestimonialCarousel({
     >
       <div className="flex items-center justify-between mb-4">
         <p
-          className="text-brand-accent text-xs uppercase tracking-widest"
+          className="text-orange-700 text-xs font-semibold uppercase tracking-widest"
           style={{ fontFamily: "var(--font-rajdhani)" }}
         >
           What Customers Say
@@ -61,7 +61,7 @@ export default function LPTestimonialCarousel({
 
       <div className="min-h-[9.5rem]" aria-live="polite">
         <p
-          className={`text-slate-200 text-sm leading-relaxed ${isLong && !expanded ? "line-clamp-4" : ""}`}
+          className={`text-slate-700 text-sm leading-relaxed ${isLong && !expanded ? "line-clamp-4" : ""}`}
           style={{ fontFamily: "var(--font-dm-sans)" }}
         >
           &ldquo;{t.quote}&rdquo;
@@ -70,7 +70,7 @@ export default function LPTestimonialCarousel({
           <button
             type="button"
             onClick={() => setExpanded((v) => !v)}
-            className="mt-1 text-brand-accent text-xs hover:text-white transition-colors duration-200"
+            className="mt-1 text-orange-700 text-xs font-semibold hover:text-brand-base transition-colors duration-200"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             {expanded ? "Show less" : "Read more"}
@@ -78,13 +78,13 @@ export default function LPTestimonialCarousel({
         )}
         <div className="mt-4">
           <p
-            className="text-white text-sm font-bold"
+            className="text-brand-base text-sm font-bold"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             {t.name}
           </p>
           <p
-            className="text-slate-400 text-xs"
+            className="text-slate-500 text-xs"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             {t.location}
@@ -93,7 +93,7 @@ export default function LPTestimonialCarousel({
       </div>
 
       {count > 1 && (
-        <div className="flex items-center justify-between mt-5 pt-4 border-t border-white/10">
+        <div className="flex items-center justify-between mt-5 pt-4 border-t border-slate-200">
           <div className="flex items-center gap-2">
             {testimonials.map((_, i) => (
               <button
@@ -103,7 +103,7 @@ export default function LPTestimonialCarousel({
                 aria-label={`View review ${i + 1}`}
                 aria-current={i === active}
                 className={`h-2 rounded-full transition-all duration-300 ${
-                  i === active ? "w-6 bg-brand-accent" : "w-2 bg-white/25 hover:bg-brand-accent/50"
+                  i === active ? "w-6 bg-brand-accent" : "w-2 bg-slate-300 hover:bg-brand-accent/60"
                 }`}
               />
             ))}
@@ -113,7 +113,7 @@ export default function LPTestimonialCarousel({
               type="button"
               onClick={() => go(active - 1)}
               aria-label="Previous review"
-              className="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 text-white hover:text-brand-accent hover:border-brand-accent/50 transition-colors duration-200"
+              className="flex items-center justify-center w-9 h-9 rounded-full border border-slate-300 text-slate-700 hover:text-brand-accent hover:border-brand-accent transition-colors duration-200"
             >
               <ChevronLeft size={18} />
             </button>
@@ -121,7 +121,7 @@ export default function LPTestimonialCarousel({
               type="button"
               onClick={() => go(active + 1)}
               aria-label="Next review"
-              className="flex items-center justify-center w-9 h-9 rounded-full border border-white/15 text-white hover:text-brand-accent hover:border-brand-accent/50 transition-colors duration-200"
+              className="flex items-center justify-center w-9 h-9 rounded-full border border-slate-300 text-slate-700 hover:text-brand-accent hover:border-brand-accent transition-colors duration-200"
             >
               <ChevronRight size={18} />
             </button>

@@ -25,12 +25,15 @@ export default function LPEstimateForm({
   defaultService = "",
   successMessage = "we'll be in touch within 1 business day.",
   idPrefix = "lp",
+  variant = "dark",
 }: {
   services: Service[];
   defaultService?: string;
   successMessage?: string;
   // Keeps field ids unique when a page renders more than one form.
   idPrefix?: string;
+  // "light" for forms on a white card (service LPs); area LPs stay dark.
+  variant?: "dark" | "light";
 }) {
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -98,18 +101,43 @@ export default function LPEstimateForm({
     }
   };
 
-  const inputClass = `w-full bg-brand-base border px-4 py-3 rounded-sm text-white text-sm outline-none transition-colors duration-200 placeholder:text-slate-500 focus:border-brand-accent/70`;
-  const labelClass = `block text-xs uppercase tracking-widest text-slate-300 mb-2`;
+  const t =
+    variant === "light"
+      ? {
+          input: "bg-[#eceef2] text-brand-base placeholder:text-slate-500 focus:border-brand-accent focus:bg-white",
+          border: "border-slate-300",
+          label: "text-slate-600 font-semibold",
+          optional: "text-slate-500",
+          error: "text-red-600",
+          heading: "text-brand-base",
+          body: "text-slate-600",
+          buttonHover: "hover:bg-brand-base hover:text-white",
+          note: "text-slate-500",
+        }
+      : {
+          input: "bg-brand-base text-white placeholder:text-slate-500 focus:border-brand-accent/70",
+          border: "border-white/15",
+          label: "text-slate-300",
+          optional: "text-slate-400",
+          error: "text-red-400",
+          heading: "text-white",
+          body: "text-slate-400",
+          buttonHover: "hover:bg-white",
+          note: "text-slate-400",
+        };
+
+  const inputClass = `w-full border px-4 py-3 rounded-sm text-sm outline-none transition-colors duration-200 ${t.input}`;
+  const labelClass = `block text-xs uppercase tracking-widest mb-2 ${t.label}`;
   const fieldId = (name: string) => `${idPrefix}-${name}`;
 
   if (isSubmitted) {
     return (
       <div className="flex flex-col items-center text-center py-10 gap-4">
         <CheckCircle className="text-brand-accent" size={44} />
-        <h3 className="text-2xl font-bold text-white" style={{ fontFamily: "var(--font-rajdhani)" }}>
+        <h3 className={`text-2xl font-bold ${t.heading}`} style={{ fontFamily: "var(--font-rajdhani)" }}>
           Request Received!
         </h3>
-        <p className="text-slate-400 leading-relaxed" style={{ fontFamily: "var(--font-dm-sans)" }}>
+        <p className={`${t.body} leading-relaxed`} style={{ fontFamily: "var(--font-dm-sans)" }}>
           Thanks {formData.name.split(" ")[0]} — {successMessage}
         </p>
       </div>
@@ -140,10 +168,10 @@ export default function LPEstimateForm({
             value={formData.name}
             onChange={handleChange}
             placeholder="John Smith"
-            className={`${inputClass} ${errors.name ? "border-red-500/50" : "border-white/15"}`}
+            className={`${inputClass} ${errors.name ? "border-red-500/50" : t.border}`}
             style={{ fontFamily: "var(--font-dm-sans)" }}
           />
-          {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
+          {errors.name && <p className={`${t.error} text-xs mt-1`}>{errors.name}</p>}
         </div>
         <div>
           <label htmlFor={fieldId("phone")} className={labelClass} style={{ fontFamily: "var(--font-rajdhani)" }}>
@@ -156,10 +184,10 @@ export default function LPEstimateForm({
             value={formData.phone}
             onChange={handleChange}
             placeholder="(555) 000-0000"
-            className={`${inputClass} ${errors.phone ? "border-red-500/50" : "border-white/15"}`}
+            className={`${inputClass} ${errors.phone ? "border-red-500/50" : t.border}`}
             style={{ fontFamily: "var(--font-dm-sans)" }}
           />
-          {errors.phone && <p className="text-red-400 text-xs mt-1">{errors.phone}</p>}
+          {errors.phone && <p className={`${t.error} text-xs mt-1`}>{errors.phone}</p>}
         </div>
       </div>
 
@@ -174,10 +202,10 @@ export default function LPEstimateForm({
           value={formData.email}
           onChange={handleChange}
           placeholder="john@example.com"
-          className={`${inputClass} ${errors.email ? "border-red-500/50" : "border-white/15"}`}
+          className={`${inputClass} ${errors.email ? "border-red-500/50" : t.border}`}
           style={{ fontFamily: "var(--font-dm-sans)" }}
         />
-        {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
+        {errors.email && <p className={`${t.error} text-xs mt-1`}>{errors.email}</p>}
       </div>
 
       <div>
@@ -191,10 +219,10 @@ export default function LPEstimateForm({
           value={formData.address}
           onChange={handleChange}
           placeholder="123 Main St, City, State"
-          className={`${inputClass} ${errors.address ? "border-red-500/50" : "border-white/15"}`}
+          className={`${inputClass} ${errors.address ? "border-red-500/50" : t.border}`}
           style={{ fontFamily: "var(--font-dm-sans)" }}
         />
-        {errors.address && <p className="text-red-400 text-xs mt-1">{errors.address}</p>}
+        {errors.address && <p className={`${t.error} text-xs mt-1`}>{errors.address}</p>}
       </div>
 
       <div>
@@ -206,7 +234,7 @@ export default function LPEstimateForm({
           name="serviceType"
           value={formData.serviceType}
           onChange={handleChange}
-          className={`${inputClass} ${errors.serviceType ? "border-red-500/50" : "border-white/15"}`}
+          className={`${inputClass} ${errors.serviceType ? "border-red-500/50" : t.border}`}
           style={{ fontFamily: "var(--font-dm-sans)" }}
         >
           <option value="" disabled>
@@ -218,12 +246,12 @@ export default function LPEstimateForm({
             </option>
           ))}
         </select>
-        {errors.serviceType && <p className="text-red-400 text-xs mt-1">{errors.serviceType}</p>}
+        {errors.serviceType && <p className={`${t.error} text-xs mt-1`}>{errors.serviceType}</p>}
       </div>
 
       <div>
         <label htmlFor={fieldId("message")} className={labelClass} style={{ fontFamily: "var(--font-rajdhani)" }}>
-          Additional Details <span className="text-slate-400 normal-case tracking-normal font-sans">(optional)</span>
+          Additional Details <span className={`${t.optional} normal-case tracking-normal font-sans`}>(optional)</span>
         </label>
         <textarea
           id={fieldId("message")}
@@ -232,13 +260,13 @@ export default function LPEstimateForm({
           onChange={handleChange}
           placeholder="Tell us about your property, any specific concerns, or questions..."
           rows={3}
-          className={`${inputClass} border-white/15 resize-none`}
+          className={`${inputClass} ${t.border} resize-none`}
           style={{ fontFamily: "var(--font-dm-sans)" }}
         />
       </div>
 
       {submitError && (
-        <p className="text-red-400 text-sm text-center">{submitError}</p>
+        <p className={`${t.error} text-sm text-center`}>{submitError}</p>
       )}
 
       <div className="relative isolate mt-2">
@@ -250,7 +278,7 @@ export default function LPEstimateForm({
       <button
         type="submit"
         disabled={isSubmitting}
-        className="group w-full flex items-center justify-center gap-3 bg-brand-accent text-brand-base font-bold px-8 py-4 rounded-sm text-sm uppercase tracking-widest hover:bg-white transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+        className={`group w-full flex items-center justify-center gap-3 bg-brand-accent text-brand-base font-bold px-8 py-4 rounded-sm text-sm uppercase tracking-widest ${t.buttonHover} transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed`}
         style={{ fontFamily: "var(--font-rajdhani)" }}
       >
         {isSubmitting ? (
@@ -275,7 +303,7 @@ export default function LPEstimateForm({
       </button>
       </div>
 
-      <p className="text-slate-400 text-xs text-center" style={{ fontFamily: "var(--font-dm-sans)" }}>
+      <p className={`${t.note} text-xs text-center`} style={{ fontFamily: "var(--font-dm-sans)" }}>
         No spam. No commitment. Response within 1 business day.
       </p>
     </form>

@@ -7,8 +7,13 @@ import { brandColors, rgba } from "../../config/colors";
 // (app/components/Hero.tsx): faint cyan grid scrolling downward, a soft
 // scanline band drifting down, and a blurred accent orb bottom-left.
 // Draws one still frame when the visitor prefers reduced motion.
-export default function LPGridBackground() {
+// tone="light" swaps the faint cyan for faint navy so it reads on off-white.
+export default function LPGridBackground({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const navy = { r: 5, g: 13, b: 26 };
+  const lineColor = tone === "light" ? rgba(navy, 0.06) : rgba(brandColors.glowCyan, 0.04);
+  const bandColor = tone === "light" ? navy : brandColors.glowCyan;
+  const bandAlpha = tone === "light" ? 0.04 : 0.035;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -28,7 +33,7 @@ export default function LPGridBackground() {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      ctx.strokeStyle = rgba(brandColors.glowCyan, 0.04);
+      ctx.strokeStyle = lineColor;
       ctx.lineWidth = 1;
       const spacing = 48;
 
@@ -47,9 +52,9 @@ export default function LPGridBackground() {
 
       const bandY = offset % canvas.height;
       const grad = ctx.createLinearGradient(0, bandY - 40, 0, bandY + 40);
-      grad.addColorStop(0, rgba(brandColors.glowCyan, 0));
-      grad.addColorStop(0.5, rgba(brandColors.glowCyan, 0.035));
-      grad.addColorStop(1, rgba(brandColors.glowCyan, 0));
+      grad.addColorStop(0, rgba(bandColor, 0));
+      grad.addColorStop(0.5, rgba(bandColor, bandAlpha));
+      grad.addColorStop(1, rgba(bandColor, 0));
       ctx.fillStyle = grad;
       ctx.fillRect(0, bandY - 40, canvas.width, 80);
 
@@ -71,7 +76,7 @@ export default function LPGridBackground() {
       cancelAnimationFrame(animFrameId);
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [lineColor, bandColor, bandAlpha]);
 
   return (
     <>
