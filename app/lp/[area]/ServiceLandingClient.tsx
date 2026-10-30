@@ -24,6 +24,7 @@ import { urlFor } from "../../lib/sanity";
 import PhotoCarousel from "../../components/PhotoCarousel";
 import TrackedLink from "../components/TrackedLink";
 import LPEstimateForm from "../components/LPEstimateForm";
+import LPTestimonialCarousel from "../components/LPTestimonialCarousel";
 
 // ─── DEFAULTS ─────────────────────────────────────────────────────────────────
 const DEFAULT_INCLUDES = [
@@ -36,7 +37,7 @@ const DEFAULT_INCLUDES = [
 // ─── HEADER ───────────────────────────────────────────────────────────────────
 function LandingHeader({ settings }: { settings: SiteSettings }) {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-brand-base/95 backdrop-blur-sm border-b border-white/5">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0f1d33]/95 backdrop-blur-sm border-b border-white/10 shadow-lg shadow-black/40">
       <div className="max-w-6xl mx-auto px-6 md:px-16 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image
@@ -78,13 +79,13 @@ function LandingFooter({ settings }: { settings: SiteSettings }) {
         <div className="flex items-center gap-6">
           <a
             href="/privacy"
-            className="text-slate-600 text-xs hover:text-white transition-colors duration-200"
+            className="text-slate-400 text-xs hover:text-white transition-colors duration-200"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             Privacy Policy
           </a>
           <span
-            className="text-slate-600 text-xs"
+            className="text-slate-400 text-xs"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             © {new Date().getFullYear()} {settings.siteName}. All rights reserved.
@@ -163,8 +164,10 @@ export default function ServiceLandingClient({
           />
           <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
 
-          <div className="relative max-w-6xl mx-auto px-6 md:px-16 py-10 lg:py-14 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start w-full">
-            <div className="flex flex-col gap-8">
+          {/* Mobile order: headline → form + reviews → checklist + badges.
+              Desktop: left column (headline, checklist) beside form + reviews. */}
+          <div className="relative max-w-6xl mx-auto px-6 md:px-16 py-10 lg:py-14 grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-[auto_1fr] gap-10 lg:gap-x-16 lg:gap-y-8 items-start content-start w-full">
+            <div className="flex flex-col gap-8 lg:col-start-1 lg:row-start-1">
               <motion.p
                 custom={0}
                 variants={fadeUp}
@@ -181,7 +184,7 @@ export default function ServiceLandingClient({
                 variants={fadeUp}
                 initial="hidden"
                 animate="visible"
-                className="text-5xl md:text-6xl font-bold text-white leading-tight"
+                className="text-4xl md:text-5xl font-bold text-white leading-tight"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 {page.heroHeading}
@@ -201,13 +204,49 @@ export default function ServiceLandingClient({
                   variants={fadeUp}
                   initial="hidden"
                   animate="visible"
-                  className="text-slate-400 text-lg leading-relaxed max-w-lg"
+                  className="text-slate-300 text-lg leading-relaxed max-w-lg"
                   style={{ fontFamily: "var(--font-dm-sans)" }}
                 >
                   {heroSubheading}
                 </motion.p>
               )}
+            </div>
 
+            {/* Right — form card + reviews */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.6,
+                delay: 0.3,
+                ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+              }}
+              className="flex flex-col gap-6 lg:col-start-2 lg:row-start-1 lg:row-span-2"
+            >
+              <div
+                id="estimate"
+                className="scroll-mt-20 bg-[#0c1a2e] border border-white/10 rounded-sm p-8"
+              >
+                <div className="mb-6">
+                  <h2
+                    className="text-2xl font-bold text-white mb-1"
+                    style={{ fontFamily: "var(--font-rajdhani)" }}
+                  >
+                    {formHeading}
+                  </h2>
+                  <p
+                    className="text-slate-400 text-sm"
+                    style={{ fontFamily: "var(--font-dm-sans)" }}
+                  >
+                    {formSubheading}
+                  </p>
+                </div>
+                <LPEstimateForm services={services} defaultService={defaultService} idPrefix="lp-top" />
+              </div>
+              <LPTestimonialCarousel testimonials={testimonials} />
+            </motion.div>
+
+            <div className="flex flex-col gap-8 lg:col-start-1 lg:row-start-2">
               <motion.ul
                 custom={3}
                 variants={fadeUp}
@@ -251,95 +290,8 @@ export default function ServiceLandingClient({
                 ))}
               </motion.div>
             </div>
-
-            {/* Right — form card */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                delay: 0.3,
-                ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-              }}
-              id="estimate"
-              className="scroll-mt-20 bg-brand-surface border border-white/10 rounded-sm p-8"
-            >
-              <div className="mb-6">
-                <h2
-                  className="text-2xl font-bold text-white mb-1"
-                  style={{ fontFamily: "var(--font-rajdhani)" }}
-                >
-                  {formHeading}
-                </h2>
-                <p
-                  className="text-slate-500 text-sm"
-                  style={{ fontFamily: "var(--font-dm-sans)" }}
-                >
-                  {formSubheading}
-                </p>
-              </div>
-              <LPEstimateForm services={services} defaultService={defaultService} />
-            </motion.div>
           </div>
         </section>
-
-        {/* ── TESTIMONIALS ────────────────────────────────────────────── */}
-        {testimonials.length > 0 && (
-          <section className="relative bg-brand-base py-20 overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
-            <div className="max-w-6xl mx-auto px-6 md:px-16">
-              <p
-                className="text-brand-accent text-xs uppercase tracking-widest text-center mb-10"
-                style={{ fontFamily: "var(--font-rajdhani)" }}
-              >
-                What Customers Say
-              </p>
-              <div
-                className={
-                  testimonials.length === 1
-                    ? "grid grid-cols-1 gap-6 max-w-lg mx-auto"
-                    : testimonials.length === 2
-                      ? "grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto"
-                      : "grid grid-cols-1 md:grid-cols-3 gap-6"
-                }
-              >
-                {testimonials.map((t) => (
-                  <div
-                    key={t.name}
-                    className="p-6 rounded-sm border border-white/5 bg-brand-surface flex flex-col gap-4"
-                  >
-                    <div className="flex gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={12} className="text-brand-accent fill-brand-accent" />
-                      ))}
-                    </div>
-                    <p
-                      className="text-slate-300 text-sm leading-relaxed flex-1"
-                      style={{ fontFamily: "var(--font-dm-sans)" }}
-                    >
-                      &ldquo;{t.quote}&rdquo;
-                    </p>
-                    <div>
-                      <p
-                        className="text-white text-sm font-bold"
-                        style={{ fontFamily: "var(--font-rajdhani)" }}
-                      >
-                        {t.name}
-                      </p>
-                      <p
-                        className="text-slate-500 text-xs"
-                        style={{ fontFamily: "var(--font-dm-sans)" }}
-                      >
-                        {t.location}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* ── BOTTOM CTA ──────────────────────────────────────────────── */}
         <section className="relative bg-brand-surface py-20 overflow-hidden">
@@ -349,8 +301,8 @@ export default function ServiceLandingClient({
           <div className="absolute bottom-6 left-6 w-8 h-8 border-l border-b border-brand-accent/20" />
           <div className="absolute bottom-6 right-6 w-8 h-8 border-r border-b border-brand-accent/20" />
 
-          <div className="max-w-2xl mx-auto px-6 md:px-16">
-            <div className="text-center mb-10">
+          <div className="max-w-4xl mx-auto px-6 md:px-16">
+            <div className="text-center mb-10 max-w-2xl mx-auto">
               <p
                 className="text-brand-accent text-xs uppercase tracking-widest mb-4"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
@@ -383,18 +335,18 @@ export default function ServiceLandingClient({
               images={(page.formPhotos ?? [])
                 .filter((img) => img?.asset)
                 .map((img) => ({
-                  url: urlFor(img).width(1200).height(675).fit("crop").url(),
+                  url: urlFor(img).width(1200).height(900).fit("crop").url(),
                   alt: img.alt,
                 }))}
             />
-            <div className="bg-brand-base border border-white/10 rounded-sm p-8">
+            <div className="max-w-2xl mx-auto bg-[#0c1a2e] border border-white/10 rounded-sm p-8">
               <h3
                 className="text-xl font-bold text-white mb-6"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 Or Request Your Free Estimate Online
               </h3>
-              <LPEstimateForm services={services} defaultService={defaultService} />
+              <LPEstimateForm services={services} defaultService={defaultService} idPrefix="lp-bottom" />
             </div>
           </div>
         </section>

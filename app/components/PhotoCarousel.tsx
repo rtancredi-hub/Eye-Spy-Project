@@ -29,14 +29,14 @@ export default function PhotoCarousel({
         {images.map((img, i) => (
           <div
             key={i}
-            className="relative shrink-0 w-[85%] sm:w-[60%] aspect-video rounded-sm overflow-hidden border border-white/10 [scroll-snap-align:center]"
+            className="relative shrink-0 w-[85%] sm:w-[60%] aspect-[4/3] rounded-sm overflow-hidden border border-white/10 [scroll-snap-align:center]"
           >
             <Image
               src={img.url}
               alt={img.alt ?? "Project photo"}
               fill
               className="object-cover"
-              sizes="(max-width: 640px) 85vw, 60vw"
+              sizes="(max-width: 640px) 85vw, 540px"
             />
           </div>
         ))}
