@@ -189,6 +189,7 @@ export default function ServiceLandingClient({
                   <>
                     <br />
                     <span
+                      className="inline-block"
                       style={{
                         background:
                           "linear-gradient(90deg, var(--brand-accent) 0%, var(--brand-accent-light) 60%, var(--brand-accent-lighter) 100%)",
