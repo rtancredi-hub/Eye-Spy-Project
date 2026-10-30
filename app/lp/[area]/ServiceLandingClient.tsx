@@ -64,7 +64,7 @@ function LandingHeader({ settings }: { settings: SiteSettings }) {
 // ─── FOOTER ───────────────────────────────────────────────────────────────────
 function LandingFooter({ settings }: { settings: SiteSettings }) {
   return (
-    <footer className="border-t border-white/5 py-6 bg-brand-deep">
+    <footer className="border-t border-white/5 pt-6 pb-24 lg:pb-6 bg-brand-deep">
       <div className="max-w-6xl mx-auto px-6 md:px-16 flex flex-col sm:flex-row items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-2">
           <ShieldCheck className="text-brand-accent" size={16} strokeWidth={2.2} />
@@ -152,7 +152,7 @@ export default function ServiceLandingClient({
 
       <main className="bg-brand-base pt-16">
         {/* ── HERO + FORM ─────────────────────────────────────────────── */}
-        <section className="relative min-h-screen flex items-center overflow-hidden">
+        <section className="relative overflow-hidden">
           <div
             className="pointer-events-none absolute inset-0"
             style={{
@@ -163,7 +163,7 @@ export default function ServiceLandingClient({
           />
           <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
 
-          <div className="relative max-w-6xl mx-auto px-6 md:px-16 py-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
+          <div className="relative max-w-6xl mx-auto px-6 md:px-16 py-10 lg:py-14 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start w-full">
             <div className="flex flex-col gap-8">
               <motion.p
                 custom={0}
@@ -269,7 +269,8 @@ export default function ServiceLandingClient({
                 delay: 0.3,
                 ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
               }}
-              className="bg-brand-surface border border-white/10 rounded-sm p-8"
+              id="estimate"
+              className="scroll-mt-20 bg-brand-surface border border-white/10 rounded-sm p-8"
             >
               <div className="mb-6">
                 <h2
@@ -287,37 +288,6 @@ export default function ServiceLandingClient({
               </div>
               <LPEstimateForm services={services} defaultService={defaultService} />
             </motion.div>
-          </div>
-        </section>
-
-        {/* ── STATS BAR ───────────────────────────────────────────────── */}
-        <section className="relative bg-brand-surface py-12 overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
-          <div className="max-w-6xl mx-auto px-6 md:px-16">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-              {[
-                { value: settings.stats.installs, label: "Systems Installed" },
-                { value: settings.stats.years, label: "Years Experience" },
-                { value: settings.stats.rating, label: "Google Rating" },
-                { value: settings.stats.satisfaction, label: "Satisfaction Rate" },
-              ].map((stat) => (
-                <div key={stat.label} className="flex flex-col gap-1">
-                  <span
-                    className="text-3xl font-bold text-white"
-                    style={{ fontFamily: "var(--font-rajdhani)" }}
-                  >
-                    {stat.value}
-                  </span>
-                  <span
-                    className="text-xs uppercase tracking-widest text-slate-500"
-                    style={{ fontFamily: "var(--font-rajdhani)" }}
-                  >
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -437,6 +407,24 @@ export default function ServiceLandingClient({
           </div>
         </section>
       </main>
+
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 grid grid-cols-2 gap-2 p-3 bg-brand-base/95 backdrop-blur-sm border-t border-white/10">
+        <TrackedLink
+          href={siteConfig.phoneHref}
+          className="flex items-center justify-center gap-2 py-3 rounded-sm bg-brand-accent text-brand-base font-bold text-sm uppercase tracking-widest"
+          style={{ fontFamily: "var(--font-rajdhani)" }}
+        >
+          <Phone size={16} />
+          Call Now
+        </TrackedLink>
+        <a
+          href="#estimate"
+          className="flex items-center justify-center py-3 rounded-sm border border-brand-accent text-brand-accent font-bold text-sm uppercase tracking-widest"
+          style={{ fontFamily: "var(--font-rajdhani)" }}
+        >
+          Free Estimate
+        </a>
+      </div>
 
       <LandingFooter settings={settings} />
     </>
