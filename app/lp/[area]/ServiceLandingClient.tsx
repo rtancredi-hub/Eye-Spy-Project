@@ -188,15 +188,7 @@ export default function ServiceLandingClient({
                 {page.heroHeadingAccent && (
                   <>
                     <br />
-                    <span
-                      className="inline-block"
-                      style={{
-                        background:
-                          "linear-gradient(90deg, var(--brand-accent) 0%, var(--brand-accent-light) 60%, var(--brand-accent-lighter) 100%)",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                      }}
-                    >
+                                       <span className="inline-block text-brand-accent lg:bg-linear-to-r lg:from-brand-accent lg:via-brand-accent-light lg:to-brand-accent-lighter lg:bg-clip-text lg:text-transparent">
                       {page.heroHeadingAccent}
                     </span>
                   </>
