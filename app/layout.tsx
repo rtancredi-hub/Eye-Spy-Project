@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Rajdhani, DM_Sans } from "next/font/google";
+import { Rajdhani } from "next/font/google";
+import localFont from "next/font/local";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { siteConfig } from "./config/site";
@@ -15,9 +16,11 @@ const rajdhani = Rajdhani({
   display: "swap",
 });
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500"],
+// Self-hosted (Google Fonts' latin variable file) — next/font/google failed on
+// Vercel when Google served DM Sans from a /l/font?kit=…&skey=… URL.
+const dmSans = localFont({
+  src: "./fonts/dm-sans-latin.woff2",
+  weight: "400 500",
   variable: "--font-dm-sans",
   display: "swap",
 });
