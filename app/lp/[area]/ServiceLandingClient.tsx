@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion, type Variants } from "framer-motion";
 import {
   ShieldCheck,
   Phone,
@@ -25,6 +24,7 @@ import PhotoCarousel from "../../components/PhotoCarousel";
 import TrackedLink from "../components/TrackedLink";
 import LPEstimateForm from "../components/LPEstimateForm";
 import LPTestimonialCarousel from "../components/LPTestimonialCarousel";
+import LPGridBackground from "../components/LPGridBackground";
 
 // ─── DEFAULTS ─────────────────────────────────────────────────────────────────
 const DEFAULT_INCLUDES = [
@@ -36,10 +36,25 @@ const DEFAULT_INCLUDES = [
 
 // ─── HEADER ───────────────────────────────────────────────────────────────────
 function LandingHeader({ settings }: { settings: SiteSettings }) {
+  const trustItems = [
+    { icon: <BadgeCheck size={14} />, label: "Licensed & Insured" },
+    { icon: <Users size={14} />, label: `${settings.stats.installs} Installs` },
+    {
+      icon: <Clock size={14} />,
+      // Industry experience, not years in business. Sanity's value may
+      // already include "Years" (e.g. "15+ Years").
+      label: `${settings.stats.years}${/year/i.test(settings.stats.years) ? "" : " Years"} Experience`,
+    },
+  ];
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0f1d33]/95 backdrop-blur-sm border-b border-white/10 shadow-lg shadow-black/40">
-      <div className="max-w-6xl mx-auto px-6 md:px-16 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0f1d33]/95 backdrop-blur-sm shadow-lg shadow-black/40">
+      {/* Glowing "lit fiber" line along the bottom edge */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/70 to-transparent" aria-hidden />
+      <div className="absolute -bottom-1 left-1/4 right-1/4 h-1 bg-brand-accent/30 blur-sm" aria-hidden />
+
+      <div className="max-w-6xl mx-auto px-6 md:px-16 h-16 flex items-center justify-between gap-6">
+        <Link href="/" className="flex items-center gap-2 shrink-0">
           <Image
             src={siteConfig.brand.logo}
             alt={siteConfig.brand.logoAlt}
@@ -49,14 +64,38 @@ function LandingHeader({ settings }: { settings: SiteSettings }) {
             priority
           />
         </Link>
-        <TrackedLink
-          href={siteConfig.phoneHref}
-          className="flex items-center gap-2 text-white font-bold text-sm hover:text-brand-accent transition-colors duration-200"
-          style={{ fontFamily: "var(--font-rajdhani)" }}
-        >
-          <Phone size={14} className="text-brand-accent" />
-          {settings.phone}
-        </TrackedLink>
+
+        <ul className="hidden xl:flex items-center gap-5">
+          {trustItems.map((item) => (
+            <li
+              key={item.label}
+              className="flex items-center gap-1.5 text-slate-300 text-xs uppercase tracking-wider"
+              style={{ fontFamily: "var(--font-rajdhani)" }}
+            >
+              <span className="text-brand-accent">{item.icon}</span>
+              {item.label}
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex items-center gap-5 shrink-0">
+          <TrackedLink
+            href={siteConfig.phoneHref}
+            className="flex items-center gap-2 text-white font-bold text-sm hover:text-brand-accent transition-colors duration-200"
+            style={{ fontFamily: "var(--font-rajdhani)" }}
+          >
+            <Phone size={14} className="text-brand-accent" />
+            {settings.phone}
+          </TrackedLink>
+          {/* Phones already have the sticky bottom CTA bar */}
+          <a
+            href="#estimate"
+            className="hidden lg:inline-flex items-center px-4 py-2 rounded-sm bg-brand-accent text-brand-base font-bold text-xs uppercase tracking-widest hover:bg-white transition-colors duration-200"
+            style={{ fontFamily: "var(--font-rajdhani)" }}
+          >
+            Free Estimate
+          </a>
+        </div>
       </div>
     </header>
   );
@@ -134,19 +173,6 @@ export default function ServiceLandingClient({
     { icon: <Users size={16} />, label: `${settings.stats.installs} Installs` },
   ];
 
-  const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.1,
-        duration: 0.6,
-        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-      },
-    }),
-  };
-
   return (
     <>
       <LandingHeader settings={settings} />
@@ -154,6 +180,7 @@ export default function ServiceLandingClient({
       <main className="bg-brand-base pt-16">
         {/* ── HERO + FORM ─────────────────────────────────────────────── */}
         <section className="relative overflow-hidden">
+          <LPGridBackground />
           <div
             className="pointer-events-none absolute inset-0"
             style={{
@@ -168,22 +195,14 @@ export default function ServiceLandingClient({
               Desktop: left column (headline, checklist) beside form + reviews. */}
           <div className="relative max-w-6xl mx-auto px-6 md:px-16 py-10 lg:py-14 grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-[auto_1fr] gap-10 lg:gap-x-16 lg:gap-y-8 items-start content-start w-full">
             <div className="flex flex-col gap-8 lg:col-start-1 lg:row-start-1">
-              <motion.p
-                custom={0}
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
+              <p
                 className="text-brand-accent text-xs uppercase tracking-widest"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 {eyebrow}
-              </motion.p>
+              </p>
 
-              <motion.h1
-                custom={1}
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
+              <h1
                 className="text-4xl md:text-5xl font-bold text-white leading-tight"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
@@ -196,31 +215,20 @@ export default function ServiceLandingClient({
                     </span>
                   </>
                 )}
-              </motion.h1>
+              </h1>
 
               {heroSubheading && (
-                <motion.p
-                  custom={2}
-                  variants={fadeUp}
-                  initial="hidden"
-                  animate="visible"
+                <p
                   className="text-slate-300 text-lg leading-relaxed max-w-lg"
                   style={{ fontFamily: "var(--font-dm-sans)" }}
                 >
                   {heroSubheading}
-                </motion.p>
+                </p>
               )}
             </div>
 
             {/* Right — form card + reviews */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                delay: 0.3,
-                ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-              }}
+            <div
               className="flex flex-col gap-6 lg:col-start-2 lg:row-start-1 lg:row-span-2"
             >
               <div
@@ -228,6 +236,16 @@ export default function ServiceLandingClient({
                 className="scroll-mt-20 bg-[#0c1a2e] border border-white/10 rounded-sm p-8"
               >
                 <div className="mb-6">
+                  <p
+                    className="flex items-center gap-2 mb-3 text-emerald-400 text-xs uppercase tracking-widest"
+                    style={{ fontFamily: "var(--font-rajdhani)" }}
+                  >
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping motion-reduce:animate-none" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                    </span>
+                    Same-week site visits available
+                  </p>
                   <h2
                     className="text-2xl font-bold text-white mb-1"
                     style={{ fontFamily: "var(--font-rajdhani)" }}
@@ -244,14 +262,10 @@ export default function ServiceLandingClient({
                 <LPEstimateForm services={services} defaultService={defaultService} idPrefix="lp-top" />
               </div>
               <LPTestimonialCarousel testimonials={testimonials} />
-            </motion.div>
+            </div>
 
             <div className="flex flex-col gap-8 lg:col-start-1 lg:row-start-2">
-              <motion.ul
-                custom={3}
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
+              <ul
                 className="flex flex-col gap-3"
               >
                 {includes.map((item) => (
@@ -265,13 +279,9 @@ export default function ServiceLandingClient({
                     </span>
                   </li>
                 ))}
-              </motion.ul>
+              </ul>
 
-              <motion.div
-                custom={4}
-                variants={fadeUp}
-                initial="hidden"
-                animate="visible"
+              <div
                 className="flex flex-wrap gap-3"
               >
                 {trustBadges.map((badge) => (
@@ -288,7 +298,7 @@ export default function ServiceLandingClient({
                     </span>
                   </div>
                 ))}
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>

@@ -241,10 +241,16 @@ export default function LPEstimateForm({
         <p className="text-red-400 text-sm text-center">{submitError}</p>
       )}
 
+      <div className="relative isolate mt-2">
+      {/* Soft pulsing glow behind the submit button */}
+      <span
+        className="absolute -inset-1 -z-10 rounded-sm bg-brand-accent/40 blur-md animate-pulse motion-reduce:animate-none"
+        aria-hidden
+      />
       <button
         type="submit"
         disabled={isSubmitting}
-        className="group flex items-center justify-center gap-3 bg-brand-accent text-brand-base font-bold px-8 py-4 rounded-sm text-sm uppercase tracking-widest hover:bg-white transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed mt-2"
+        className="group w-full flex items-center justify-center gap-3 bg-brand-accent text-brand-base font-bold px-8 py-4 rounded-sm text-sm uppercase tracking-widest hover:bg-white transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
         style={{ fontFamily: "var(--font-rajdhani)" }}
       >
         {isSubmitting ? (
@@ -267,6 +273,7 @@ export default function LPEstimateForm({
           </>
         )}
       </button>
+      </div>
 
       <p className="text-slate-400 text-xs text-center" style={{ fontFamily: "var(--font-dm-sans)" }}>
         No spam. No commitment. Response within 1 business day.
