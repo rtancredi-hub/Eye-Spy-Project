@@ -181,14 +181,14 @@ export default function Benefits({
     <section
       id="benefits"
       ref={sectionRef}
-      className="scroll-mt-20 relative bg-brand-surface py-16 md:py-24 overflow-hidden"
+      className="scroll-mt-20 relative bg-page-alt py-16 md:py-24 overflow-hidden"
     >
       {/* Atmospheric glow */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,200,255,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(239,107,77,0.04) 0%, transparent 70%)",
         }}
         aria-hidden
       />
@@ -249,7 +249,7 @@ export default function Benefits({
 
       <div className="max-w-6xl mx-auto px-6 md:px-16 flex flex-col items-center text-center">
         <p
-          className="text-brand-accent text-xs uppercase tracking-widest mb-4"
+          className="text-orange-700 text-xs uppercase tracking-widest mb-4"
           style={{ fontFamily: "var(--font-rajdhani)" }}
         >
           {eyebrow}
@@ -277,9 +277,9 @@ export default function Benefits({
             <motion.div key={benefit.title} variants={itemVariants}>
               <div
                 ref={(el) => { cardRefs.current[index] = el; }}
-                className="group p-6 md:p-8 rounded-sm border border-white/5 hover:border-brand-accent/20 bg-brand-card hover:bg-brand-card/80 transition-all duration-300 h-full text-left"
+                className="group p-6 md:p-8 rounded-sm border border-slate-200 hover:border-brand-accent/20 bg-white hover:shadow-lg hover:shadow-slate-900/10 transition-all duration-300 h-full text-left"
               >
-                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand-accent/10 text-brand-accent mb-4 group-hover:bg-brand-accent/20 transition-colors duration-300">
+                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-brand-accent/10 text-orange-700 mb-4 group-hover:bg-brand-accent/20 transition-colors duration-300">
                   {ICON_MAP[benefit.iconName] ?? <ShieldCheck size={22} />}
                 </span>
                 <h3

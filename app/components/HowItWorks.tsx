@@ -146,21 +146,21 @@ export default function HowItWorks({
     <section
       id="how-it-works"
       ref={sectionRef}
-      className="scroll-mt-20 relative bg-brand-base py-16 md:py-24 overflow-hidden"
+      className="scroll-mt-20 relative bg-page py-16 md:py-24 overflow-hidden"
     >
       {/* Atmospheric glow */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,200,255,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(239,107,77,0.04) 0%, transparent 70%)",
         }}
         aria-hidden
       />
 
       <div className="max-w-6xl mx-auto px-6 md:px-16 flex flex-col items-center text-center">
         <p
-          className="text-brand-accent text-xs uppercase tracking-widest mb-4"
+          className="text-orange-700 text-xs uppercase tracking-widest mb-4"
           style={{ fontFamily: "var(--font-rajdhani)" }}
         >
           {eyebrow}
@@ -289,14 +289,14 @@ export default function HowItWorks({
 
                     {/* Cable label tag */}
                     <div className="inline-flex items-center gap-1 mb-3 border border-brand-accent/40 bg-brand-accent/5 px-2 py-0.5 rounded-xs">
-                      <span className="text-brand-accent/80 font-mono text-[10px] tracking-widest uppercase">
+                      <span className="text-orange-700/80 font-mono text-[10px] tracking-widest uppercase">
                         PORT {step.step}
                       </span>
                     </div>
 
                     {/* Ghost step number */}
                     <span
-                      className="text-5xl sm:text-7xl font-bold text-brand-accent/15 mb-4 block leading-none"
+                      className="text-5xl sm:text-7xl font-bold text-orange-700/15 mb-4 block leading-none"
                       style={{ fontFamily: "var(--font-rajdhani)" }}
                     >
                       {step.step}

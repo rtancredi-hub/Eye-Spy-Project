@@ -15,7 +15,7 @@ export default function Footer({ settings }: { settings: SiteSettings }) {
   // every year without anyone touching the code.
 
   return (
-    <footer className="relative bg-brand-deep overflow-hidden">
+    <footer className="theme-dark relative bg-brand-deep overflow-hidden">
       {/* Top divider */}
       <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/20 to-transparent" />
 

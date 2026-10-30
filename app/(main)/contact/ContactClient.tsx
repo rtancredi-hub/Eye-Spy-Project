@@ -139,8 +139,8 @@ export default function ContactClient({
     },
   };
 
-  const inputClass = `w-full bg-brand-card border px-4 py-3 rounded-sm text-white text-sm outline-none transition-colors duration-200 placeholder:text-slate-600 focus:border-brand-accent/50`;
-  const labelClass = `block text-xs uppercase tracking-widest text-slate-400 mb-2`;
+  const inputClass = `w-full bg-white border px-4 py-3 rounded-sm text-brand-base text-sm outline-none transition-colors duration-200 placeholder:text-slate-500 focus:border-brand-accent/50`;
+  const labelClass = `block text-xs uppercase tracking-widest text-slate-600 mb-2`;
 
   const contactItems = [
     {
@@ -174,14 +174,14 @@ export default function ContactClient({
     : `Thanks ${formData.name.split(" ")[0]} — we'll get back to you within 1 business day.`;
 
   return (
-    <main className="bg-brand-base">
+    <main className="bg-page">
       {/* ── HERO BANNER ───────────────────────────────────────────────────── */}
       <section className="relative pt-40 pb-24 overflow-hidden">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,180,255,0.08) 0%, transparent 70%)",
+              "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(239,107,77,0.08) 0%, transparent 70%)",
           }}
           aria-hidden
         />
@@ -194,7 +194,7 @@ export default function ContactClient({
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="text-brand-accent text-xs uppercase tracking-widest mb-6"
+            className="text-orange-700 text-xs uppercase tracking-widest mb-6"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             {contactData.heroEyebrow ?? "Get In Touch"}
@@ -204,7 +204,7 @@ export default function ContactClient({
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="text-5xl md:text-6xl font-bold text-white leading-tight mb-6"
+            className="text-5xl md:text-6xl font-bold text-brand-base leading-tight mb-6"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             {contactData.heroHeadingLine1 ?? "We'd Love to"}
@@ -225,7 +225,7 @@ export default function ContactClient({
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="text-slate-400 text-lg max-w-xl leading-relaxed"
+            className="text-slate-600 text-lg max-w-xl leading-relaxed"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             {contactData.heroSubtitle ??
@@ -235,7 +235,7 @@ export default function ContactClient({
       </section>
 
       {/* ── MAIN CONTENT: FORM + INFO ──────────────────────────────────────── */}
-      <section className="relative bg-brand-surface py-24 overflow-hidden">
+      <section className="relative bg-page-alt py-24 overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
 
@@ -249,7 +249,7 @@ export default function ContactClient({
             >
               <motion.h2
                 variants={itemVariants}
-                className="text-3xl font-bold text-white mb-8"
+                className="text-3xl font-bold text-brand-base mb-8"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 {contactData.formHeading ?? "Send Us a Message"}
@@ -261,15 +261,15 @@ export default function ContactClient({
                   animate={{ opacity: 1, y: 0 }}
                   className="flex flex-col items-start gap-4 py-12"
                 >
-                  <CheckCircle className="text-brand-accent" size={40} />
+                  <CheckCircle className="text-orange-700" size={40} />
                   <h3
-                    className="text-2xl font-bold text-white"
+                    className="text-2xl font-bold text-brand-base"
                     style={{ fontFamily: "var(--font-rajdhani)" }}
                   >
                     {contactData.successHeading ?? "Message Sent!"}
                   </h3>
                   <p
-                    className="text-slate-400 leading-relaxed"
+                    className="text-slate-600 leading-relaxed"
                     style={{ fontFamily: "var(--font-dm-sans)" }}
                   >
                     {successBody}
@@ -306,7 +306,7 @@ export default function ContactClient({
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="John Smith"
-                      className={`${inputClass} ${errors.name ? "border-red-500/50" : "border-white/5"}`}
+                      className={`${inputClass} ${errors.name ? "border-red-500/50" : "border-slate-200"}`}
                       style={{ fontFamily: "var(--font-dm-sans)" }}
                     />
                     {errors.name && (
@@ -333,7 +333,7 @@ export default function ContactClient({
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="john@example.com"
-                        className={`${inputClass} ${errors.email ? "border-red-500/50" : "border-white/5"}`}
+                        className={`${inputClass} ${errors.email ? "border-red-500/50" : "border-slate-200"}`}
                         style={{ fontFamily: "var(--font-dm-sans)" }}
                       />
                       {errors.email && (
@@ -349,7 +349,7 @@ export default function ContactClient({
                         style={{ fontFamily: "var(--font-rajdhani)" }}
                       >
                         Phone{" "}
-                        <span className="text-slate-600 normal-case tracking-normal">
+                        <span className="text-slate-500 normal-case tracking-normal">
                           (optional)
                         </span>
                       </label>
@@ -360,7 +360,7 @@ export default function ContactClient({
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="(555) 000-0000"
-                        className={`${inputClass} border-white/5`}
+                        className={`${inputClass} border-slate-200`}
                         style={{ fontFamily: "var(--font-dm-sans)" }}
                       />
                     </div>
@@ -373,7 +373,7 @@ export default function ContactClient({
                       style={{ fontFamily: "var(--font-rajdhani)" }}
                     >
                       Service of Interest{" "}
-                      <span className="text-slate-600 normal-case tracking-normal">
+                      <span className="text-slate-500 normal-case tracking-normal">
                         (optional)
                       </span>
                     </label>
@@ -382,7 +382,7 @@ export default function ContactClient({
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
-                      className={`${inputClass} border-white/5`}
+                      className={`${inputClass} border-slate-200`}
                       style={{ fontFamily: "var(--font-dm-sans)" }}
                     >
                       <option value="">Select a service...</option>
@@ -409,7 +409,7 @@ export default function ContactClient({
                       onChange={handleChange}
                       placeholder="What can we help you with?"
                       rows={5}
-                      className={`${inputClass} ${errors.message ? "border-red-500/50" : "border-white/5"} resize-none`}
+                      className={`${inputClass} ${errors.message ? "border-red-500/50" : "border-slate-200"} resize-none`}
                       style={{ fontFamily: "var(--font-dm-sans)" }}
                     />
                     {errors.message && (
@@ -432,7 +432,7 @@ export default function ContactClient({
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="group flex items-center gap-3 bg-brand-accent text-brand-base font-bold px-8 py-4 rounded-sm text-sm uppercase tracking-widest hover:bg-white transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+                      className="group flex items-center gap-3 bg-brand-accent text-brand-base font-bold px-8 py-4 rounded-sm text-sm uppercase tracking-widest hover:bg-brand-base hover:text-white transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
                       style={{ fontFamily: "var(--font-rajdhani)" }}
                     >
                       {isSubmitting ? (
@@ -442,7 +442,7 @@ export default function ContactClient({
                             {[0, 1, 2].map((i) => (
                               <span
                                 key={i}
-                                className="w-1 h-1 rounded-full bg-brand-base animate-bounce"
+                                className="w-1 h-1 rounded-full bg-page animate-bounce"
                                 style={{ animationDelay: `${i * 0.15}s` }}
                               />
                             ))}
@@ -474,7 +474,7 @@ export default function ContactClient({
             >
               <motion.h2
                 variants={itemVariants}
-                className="text-3xl font-bold text-white mb-2"
+                className="text-3xl font-bold text-brand-base mb-2"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 {contactData.infoHeading ?? "Contact Information"}
@@ -484,14 +484,14 @@ export default function ContactClient({
                 <motion.div
                   key={item.label}
                   variants={itemVariants}
-                  className="flex items-start gap-4 p-5 rounded-sm border border-white/5 bg-brand-card"
+                  className="flex items-start gap-4 p-5 rounded-sm border border-slate-200 bg-white"
                 >
-                  <span className="shrink-0 w-10 h-10 rounded-full bg-brand-accent/10 text-brand-accent flex items-center justify-center">
+                  <span className="shrink-0 w-10 h-10 rounded-full bg-brand-accent/10 text-orange-700 flex items-center justify-center">
                     {item.icon}
                   </span>
                   <div>
                     <p
-                      className="text-xs uppercase tracking-widest text-slate-500 mb-1"
+                      className="text-xs uppercase tracking-widest text-slate-600 mb-1"
                       style={{ fontFamily: "var(--font-rajdhani)" }}
                     >
                       {item.label}
@@ -499,14 +499,14 @@ export default function ContactClient({
                     {item.href ? (
                       <a
                         href={item.href}
-                        className="text-white hover:text-brand-accent transition-colors duration-200 text-sm"
+                        className="text-brand-base hover:text-orange-700 transition-colors duration-200 text-sm"
                         style={{ fontFamily: "var(--font-dm-sans)" }}
                       >
                         {item.value}
                       </a>
                     ) : (
                       <p
-                        className="text-white text-sm"
+                        className="text-brand-base text-sm"
                         style={{ fontFamily: "var(--font-dm-sans)" }}
                       >
                         {item.value}
@@ -521,13 +521,13 @@ export default function ContactClient({
                 className="p-5 rounded-sm border border-brand-accent/10 bg-brand-accent/5 mt-2"
               >
                 <p
-                  className="text-brand-accent text-xs uppercase tracking-widest mb-2"
+                  className="text-orange-700 text-xs uppercase tracking-widest mb-2"
                   style={{ fontFamily: "var(--font-rajdhani)" }}
                 >
                   {contactData.serviceAreaLabel ?? "Service Area"}
                 </p>
                 <p
-                  className="text-slate-400 text-sm leading-relaxed"
+                  className="text-slate-600 text-sm leading-relaxed"
                   style={{ fontFamily: "var(--font-dm-sans)" }}
                 >
                   {settings.serviceArea}.{" "}

@@ -51,14 +51,14 @@ export default function Testimonials({
   return (
     <section
       ref={sectionRef}
-      className="relative bg-brand-surface py-24 overflow-hidden"
+      className="relative bg-page-alt py-24 overflow-hidden"
     >
       {/* Atmospheric glow */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(0,200,255,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(239,107,77,0.04) 0%, transparent 70%)",
         }}
         aria-hidden
       />
@@ -71,13 +71,13 @@ export default function Testimonials({
       >
         {/* Cable label tag above eyebrow — P-touch aesthetic */}
         <div className="inline-flex items-center gap-1 mb-4 border border-brand-accent/40 bg-brand-accent/5 px-2 py-0.5 rounded-xs" aria-hidden="true">
-          <span className="text-brand-accent/80 font-mono text-[10px] tracking-widest uppercase">
+          <span className="text-orange-700/80 font-mono text-[10px] tracking-widest uppercase">
             FEED-01 / CLIENT RESPONSE
           </span>
         </div>
 
         <p
-          className="text-brand-accent text-xs uppercase tracking-widest mb-12"
+          className="text-orange-700 text-xs uppercase tracking-widest mb-12"
           style={{ fontFamily: "var(--font-rajdhani)" }}
         >
           What Our Clients Say
@@ -115,7 +115,7 @@ export default function Testimonials({
               <div className="flex items-center gap-1 mb-4">
                 {Array.from({ length: testimonials[active].rating }).map(
                   (_, i) => (
-                    <span key={i} className="text-brand-accent text-lg">
+                    <span key={i} className="text-orange-700 text-lg">
                       ★
                     </span>
                   ),
@@ -147,7 +147,7 @@ export default function Testimonials({
               className={`h-2 transition-all duration-300 ${
                 i === active
                   ? "w-6 bg-brand-accent"
-                  : "w-2 bg-white/20 hover:bg-brand-accent/40"
+                  : "w-2 bg-slate-300 hover:bg-brand-accent/40"
               }`}
               style={{ borderRadius: 0 }}
               aria-label={`View testimonial ${i + 1}`}
@@ -163,7 +163,7 @@ export default function Testimonials({
                 prev === 0 ? testimonials.length - 1 : prev - 1,
               )
             }
-            className="w-9 h-9 border border-brand-accent/25 flex items-center justify-center text-text-secondary hover:border-brand-accent/50 hover:text-brand-accent transition-all duration-200"
+            className="w-9 h-9 border border-brand-accent/25 flex items-center justify-center text-text-secondary hover:border-brand-accent/50 hover:text-orange-700 transition-all duration-200"
             style={{ borderRadius: 0 }}
             aria-label="Previous testimonial"
           >
@@ -175,7 +175,7 @@ export default function Testimonials({
                 prev === testimonials.length - 1 ? 0 : prev + 1,
               )
             }
-            className="w-9 h-9 border border-brand-accent/25 flex items-center justify-center text-text-secondary hover:border-brand-accent/50 hover:text-brand-accent transition-all duration-200"
+            className="w-9 h-9 border border-brand-accent/25 flex items-center justify-center text-text-secondary hover:border-brand-accent/50 hover:text-orange-700 transition-all duration-200"
             style={{ borderRadius: 0 }}
             aria-label="Next testimonial"
           >

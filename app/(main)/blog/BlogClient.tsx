@@ -97,14 +97,14 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
   };
 
   return (
-    <main className="bg-brand-base">
+    <main className="bg-page">
       {/* ── HERO BANNER ───────────────────────────────────────────────────── */}
       <section className="relative pt-40 pb-24 overflow-hidden">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,180,255,0.08) 0%, transparent 70%)",
+              "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(239,107,77,0.08) 0%, transparent 70%)",
           }}
           aria-hidden
         />
@@ -117,7 +117,7 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="text-brand-accent text-xs uppercase tracking-widest mb-6"
+            className="text-orange-700 text-xs uppercase tracking-widest mb-6"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             Security Insights
@@ -127,7 +127,7 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="text-5xl md:text-6xl font-bold text-white leading-tight mb-6"
+            className="text-5xl md:text-6xl font-bold text-brand-base leading-tight mb-6"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             The {siteConfig.name}
@@ -148,7 +148,7 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="text-slate-400 text-lg max-w-xl leading-relaxed"
+            className="text-slate-600 text-lg max-w-xl leading-relaxed"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             Practical security advice, buyer's guides, and industry insights
@@ -160,7 +160,7 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
       {/* ── POSTS ─────────────────────────────────────────────────────────── */}
       <section
         ref={postsRef}
-        className="relative bg-brand-surface py-24 overflow-hidden"
+        className="relative bg-page-alt py-24 overflow-hidden"
       >
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
@@ -172,13 +172,13 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search articles..."
-              className="w-full md:w-80 bg-brand-card border border-white/5 focus:border-brand-accent/50 px-4 py-3 rounded-sm text-white text-sm outline-none transition-colors duration-200 placeholder:text-slate-600"
+              className="w-full md:w-80 bg-white border border-slate-200 focus:border-brand-accent/50 px-4 py-3 rounded-sm text-brand-base text-sm outline-none transition-colors duration-200 placeholder:text-slate-500"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white transition-colors duration-200"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-600 hover:text-brand-base transition-colors duration-200"
               >
                 <X size={14} />
               </button>
@@ -193,7 +193,7 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
                 className={`px-4 py-2 rounded-sm text-xs uppercase tracking-widest transition-all duration-200 ${
                   activeCategory === cat
                     ? "bg-brand-accent text-brand-base font-bold"
-                    : "border border-white/10 text-slate-400 hover:border-brand-accent/30 hover:text-white"
+                    : "border border-slate-200 text-slate-600 hover:border-brand-accent/30 hover:text-brand-base"
                 }`}
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
@@ -214,44 +214,44 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
                 duration: 0.6,
                 ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
               }}
-              className="group block p-8 md:p-10 rounded-sm border border-white/5 hover:border-brand-accent/20 bg-brand-card hover:bg-brand-card/80 transition-all duration-300 mb-6"
+              className="group block p-8 md:p-10 rounded-sm border border-slate-200 hover:border-brand-accent/20 bg-white hover:shadow-lg hover:shadow-slate-900/10 transition-all duration-300 mb-6"
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-4">
                     <span
-                      className="px-3 py-1 rounded-full bg-brand-accent/10 text-brand-accent text-xs uppercase tracking-widest"
+                      className="px-3 py-1 rounded-full bg-brand-accent/10 text-orange-700 text-xs uppercase tracking-widest"
                       style={{ fontFamily: "var(--font-rajdhani)" }}
                     >
                       Featured
                     </span>
                     <span
-                      className="px-3 py-1 rounded-full border border-white/10 text-slate-500 text-xs uppercase tracking-widest"
+                      className="px-3 py-1 rounded-full border border-slate-200 text-slate-600 text-xs uppercase tracking-widest"
                       style={{ fontFamily: "var(--font-rajdhani)" }}
                     >
                       {featuredPost.category}
                     </span>
                   </div>
                   <h2
-                    className="text-2xl md:text-3xl font-bold text-white mb-3 group-hover:text-brand-accent transition-colors duration-200"
+                    className="text-2xl md:text-3xl font-bold text-brand-base mb-3 group-hover:text-orange-700 transition-colors duration-200"
                     style={{ fontFamily: "var(--font-rajdhani)" }}
                   >
                     {featuredPost.title}
                   </h2>
                   <p
-                    className="text-slate-400 leading-relaxed mb-4 max-w-2xl"
+                    className="text-slate-600 leading-relaxed mb-4 max-w-2xl"
                     style={{ fontFamily: "var(--font-dm-sans)" }}
                   >
                     {featuredPost.excerpt}
                   </p>
-                  <div className="flex items-center gap-4 text-slate-600 text-xs">
+                  <div className="flex items-center gap-4 text-slate-500 text-xs">
                     <span className="flex items-center gap-1.5">
                       <Clock size={12} /> {featuredPost.readTime}
                     </span>
                     <span>{featuredPost.date}</span>
                   </div>
                 </div>
-                <div className="shrink-0 flex items-center justify-center w-12 h-12 rounded-full border border-white/10 group-hover:border-brand-accent/30 group-hover:text-brand-accent text-slate-500 transition-all duration-200">
+                <div className="shrink-0 flex items-center justify-center w-12 h-12 rounded-full border border-slate-200 group-hover:border-brand-accent/30 group-hover:text-orange-700 text-slate-600 transition-all duration-200">
                   <ArrowRight
                     size={18}
                     className="group-hover:translate-x-0.5 transition-transform duration-200"
@@ -273,13 +273,13 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
                 key={post.slug}
                 href={`/blog/${post.slug}`}
                 variants={itemVariants}
-                className="group flex flex-col p-6 rounded-sm border border-white/5 hover:border-brand-accent/20 bg-brand-card hover:bg-brand-card/80 transition-all duration-300"
+                className="group flex flex-col p-6 rounded-sm border border-slate-200 hover:border-brand-accent/20 bg-white hover:shadow-lg hover:shadow-slate-900/10 transition-all duration-300"
               >
                 {/* Category tag */}
                 <div className="flex items-center gap-2 mb-4">
-                  <Tag size={11} className="text-brand-accent/60" />
+                  <Tag size={11} className="text-orange-700/60" />
                   <span
-                    className="text-brand-accent/80 text-xs uppercase tracking-widest"
+                    className="text-orange-700/80 text-xs uppercase tracking-widest"
                     style={{ fontFamily: "var(--font-rajdhani)" }}
                   >
                     {post.category}
@@ -287,21 +287,21 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
                 </div>
 
                 <h3
-                  className="text-lg font-bold text-white mb-3 group-hover:text-brand-accent transition-colors duration-200 leading-snug"
+                  className="text-lg font-bold text-brand-base mb-3 group-hover:text-orange-700 transition-colors duration-200 leading-snug"
                   style={{ fontFamily: "var(--font-rajdhani)" }}
                 >
                   {post.title}
                 </h3>
 
                 <p
-                  className="text-slate-400 text-sm leading-relaxed mb-6 flex-1"
+                  className="text-slate-600 text-sm leading-relaxed mb-6 flex-1"
                   style={{ fontFamily: "var(--font-dm-sans)" }}
                 >
                   {post.excerpt}
                 </p>
 
                 {/* Meta row at the bottom */}
-                <div className="flex items-center justify-between text-slate-600 text-xs mt-auto">
+                <div className="flex items-center justify-between text-slate-500 text-xs mt-auto">
                   <span className="flex items-center gap-1.5">
                     <Clock size={11} /> {post.readTime}
                   </span>
@@ -312,7 +312,7 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
           </motion.div>
           {/* Result count */}
           <p
-            className="text-slate-600 text-xs text-center mt-8"
+            className="text-slate-500 text-xs text-center mt-8"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             Showing {gridPosts.length + (showFeatured ? 1 : 0)} of{" "}
@@ -325,7 +325,7 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
             <div className="flex justify-center mt-6">
               <button
                 onClick={() => setVisibleCount((prev) => prev + 6)}
-                className="border border-white/10 hover:border-brand-accent/30 text-slate-400 hover:text-white px-8 py-3 rounded-sm text-xs uppercase tracking-widest transition-all duration-200"
+                className="border border-slate-200 hover:border-brand-accent/30 text-slate-600 hover:text-brand-base px-8 py-3 rounded-sm text-xs uppercase tracking-widest transition-all duration-200"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 Load More Articles
@@ -337,13 +337,13 @@ export default function BlogClient({ posts }: { posts: BlogPost[] }) {
           {filteredPosts.length === 0 && (
             <div className="flex flex-col items-center py-16 text-center">
               <p
-                className="text-slate-500 text-lg mb-2"
+                className="text-slate-600 text-lg mb-2"
                 style={{ fontFamily: "var(--font-rajdhani)" }}
               >
                 No articles found
               </p>
               <p
-                className="text-slate-600 text-sm"
+                className="text-slate-500 text-sm"
                 style={{ fontFamily: "var(--font-dm-sans)" }}
               >
                 Try a different search term or category

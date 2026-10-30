@@ -37,7 +37,7 @@ export default function ServicesIndexClient({
   const isInView = useInView(gridRef, { once: true, amount: 0.1 });
 
   return (
-    <main className="min-h-screen bg-brand-base">
+    <main className="min-h-screen bg-page">
       {/* Hero */}
       <section className="relative pt-40 pb-20 overflow-hidden">
         <div
@@ -52,7 +52,7 @@ export default function ServicesIndexClient({
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-brand-accent text-xs uppercase tracking-widest mb-4"
+            className="text-orange-700 text-xs uppercase tracking-widest mb-4"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             What We Offer
@@ -61,7 +61,7 @@ export default function ServicesIndexClient({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold text-white"
+            className="text-5xl md:text-7xl font-bold text-brand-base"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             Our{" "}
@@ -80,7 +80,7 @@ export default function ServicesIndexClient({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-slate-400 mt-6 text-lg max-w-2xl mx-auto"
+            className="text-slate-600 mt-6 text-lg max-w-2xl mx-auto"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             Professional security system installation for homes and businesses.
@@ -90,13 +90,13 @@ export default function ServicesIndexClient({
       </section>
 
       {/* Services Grid */}
-      <section className="relative bg-brand-surface py-20 overflow-hidden">
+      <section className="relative bg-page-alt py-20 overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
         <div className="max-w-6xl mx-auto px-6 md:px-16">
           {services.length === 0 ? (
             <p
-              className="text-slate-400 text-center text-lg"
+              className="text-slate-600 text-center text-lg"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
               Services coming soon.
@@ -111,21 +111,21 @@ export default function ServicesIndexClient({
             >
               {services.map((service) => (
                 <motion.div key={service.slug} variants={itemVariants}>
-                  <div className="group p-8 rounded-sm border border-white/5 hover:border-brand-accent/20 bg-brand-card hover:bg-brand-card/80 transition-all duration-300 h-full flex flex-col">
+                  <div className="group p-8 rounded-sm border border-slate-200 hover:border-brand-accent/20 bg-white hover:shadow-lg hover:shadow-slate-900/10 transition-all duration-300 h-full flex flex-col">
                     {service.icon && (
                       <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-accent/10 text-2xl mb-5 group-hover:bg-brand-accent/20 transition-colors duration-300">
                         {service.icon}
                       </span>
                     )}
                     <h2
-                      className="text-xl font-bold text-white mb-3"
+                      className="text-xl font-bold text-brand-base mb-3"
                       style={{ fontFamily: "var(--font-rajdhani)" }}
                     >
                       {service.title}
                     </h2>
                     {service.shortDescription && (
                       <p
-                        className="text-slate-400 text-base leading-relaxed flex-1"
+                        className="text-slate-600 text-base leading-relaxed flex-1"
                         style={{ fontFamily: "var(--font-dm-sans)" }}
                       >
                         {service.shortDescription}
@@ -133,7 +133,7 @@ export default function ServicesIndexClient({
                     )}
                     <Link
                       href={`/services/${service.slug}`}
-                      className="inline-flex items-center gap-2 mt-6 text-brand-accent text-sm font-medium hover:gap-3 transition-all duration-200"
+                      className="inline-flex items-center gap-2 mt-6 text-orange-700 text-sm font-medium hover:gap-3 transition-all duration-200"
                       style={{ fontFamily: "var(--font-rajdhani)" }}
                     >
                       Learn More <ArrowRight size={16} />
@@ -147,14 +147,14 @@ export default function ServicesIndexClient({
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-brand-base">
+      <section className="py-20 bg-page">
         <div className="max-w-3xl mx-auto px-6 md:px-16 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl font-bold text-white mb-4"
+            className="text-3xl md:text-4xl font-bold text-brand-base mb-4"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             Not sure what you need?
@@ -164,7 +164,7 @@ export default function ServicesIndexClient({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-slate-400 text-lg mb-8"
+            className="text-slate-600 text-lg mb-8"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             Get in touch for a free security consultation and we&apos;ll
@@ -178,7 +178,7 @@ export default function ServicesIndexClient({
           >
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-brand-accent text-white font-semibold rounded-sm hover:bg-brand-accent/90 transition-colors duration-200"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-brand-accent text-brand-base font-semibold rounded-sm hover:bg-brand-accent/90 transition-colors duration-200"
               style={{ fontFamily: "var(--font-rajdhani)" }}
             >
               Get a Free Consultation <ArrowRight size={18} />

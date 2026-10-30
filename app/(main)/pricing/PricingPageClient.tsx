@@ -100,7 +100,7 @@ function PricingCardItem({
           ${
             card.pricingFeatured
               ? "border-brand-accent/40 bg-brand-accent/[0.03] hover:bg-brand-accent/[0.05]"
-              : "border-white/5 hover:border-brand-accent/20 bg-brand-card hover:bg-brand-card/80"
+              : "border-slate-200 hover:border-brand-accent/20 bg-white hover:shadow-lg hover:shadow-slate-900/10"
           }
           md:border-l-0 border-l-2 border-l-brand-accent/30
         `}
@@ -108,9 +108,9 @@ function PricingCardItem({
         {/* "Most Popular" badge */}
         {card.pricingFeatured && (
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-            <div className="inline-flex items-center gap-1 border border-brand-accent/40 bg-brand-base px-3 py-0.5 rounded-sm">
+            <div className="inline-flex items-center gap-1 border border-brand-accent/40 bg-page px-3 py-0.5 rounded-sm">
               <span
-                className="text-brand-accent font-mono text-[9px] tracking-widest uppercase"
+                className="text-orange-700 font-mono text-[9px] tracking-widest uppercase"
               >
                 Most Popular
               </span>
@@ -123,7 +123,7 @@ function PricingCardItem({
 
         {/* Port label tag */}
         <div className="inline-flex items-center gap-1 mb-4 border border-brand-accent/40 bg-brand-accent/5 px-2 py-0.5 rounded-sm self-start">
-          <span className="text-brand-accent/80 font-mono text-[9px] tracking-widest uppercase">
+          <span className="text-orange-700/80 font-mono text-[9px] tracking-widest uppercase">
             SVC / {String(index + 1).padStart(2, "0")}
           </span>
         </div>
@@ -136,7 +136,7 @@ function PricingCardItem({
         {/* Service title — links to service detail page */}
         <Link href={`/services/${card.slug}`}>
           <h3
-            className="text-xl font-bold text-white mb-2 hover:text-brand-accent transition-colors duration-200"
+            className="text-xl font-bold text-brand-base mb-2 hover:text-orange-700 transition-colors duration-200"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             {card.title}
@@ -145,7 +145,7 @@ function PricingCardItem({
 
         {/* Price label */}
         <p
-          className="text-3xl font-bold text-brand-accent mb-1"
+          className="text-3xl font-bold text-orange-700 mb-1"
           style={{ fontFamily: "var(--font-rajdhani)" }}
         >
           {card.priceLabel}
@@ -154,7 +154,7 @@ function PricingCardItem({
         {/* Price note */}
         {card.priceNote && (
           <p
-            className="text-slate-500 text-xs mb-4"
+            className="text-slate-600 text-xs mb-4"
             style={{ fontFamily: "var(--font-dm-sans)" }}
           >
             {card.priceNote}
@@ -162,7 +162,7 @@ function PricingCardItem({
         )}
 
         {/* Divider */}
-        <div className="w-full h-px bg-white/5 mb-4" />
+        <div className="w-full h-px bg-slate-200 mb-4" />
 
         {/* Highlights checklist */}
         {card.pricingHighlights && card.pricingHighlights.length > 0 && (
@@ -175,9 +175,9 @@ function PricingCardItem({
               >
                 <CheckCircle
                   size={14}
-                  className="text-brand-accent mt-0.5 shrink-0"
+                  className="text-orange-700 mt-0.5 shrink-0"
                 />
-                <span className="text-slate-300 text-sm leading-relaxed">
+                <span className="text-slate-700 text-sm leading-relaxed">
                   {h}
                 </span>
               </li>
@@ -191,8 +191,8 @@ function PricingCardItem({
           className={`group mt-auto flex items-center justify-center gap-2 font-bold px-5 py-3 rounded-sm text-xs uppercase tracking-widest transition-colors duration-200
             ${
               card.pricingFeatured
-                ? "bg-brand-accent text-brand-base hover:bg-white"
-                : "border border-brand-accent/40 text-brand-accent hover:bg-brand-accent hover:text-brand-base"
+                ? "bg-brand-accent text-brand-base hover:bg-brand-base hover:text-white"
+                : "border border-brand-accent/40 text-orange-700 hover:bg-brand-accent hover:text-brand-base"
             }
           `}
           style={{ fontFamily: "var(--font-rajdhani)" }}
@@ -331,14 +331,14 @@ function FaqAccordion({ items, title }: { items: PricingFaqItem[]; title?: strin
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section className="relative bg-brand-base py-24 overflow-hidden">
+    <section className="relative bg-page py-24 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
       <div className="max-w-3xl mx-auto px-6 md:px-16" ref={ref}>
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-brand-accent text-xs uppercase tracking-widest text-center mb-3"
+          className="text-orange-700 text-xs uppercase tracking-widest text-center mb-3"
           style={{ fontFamily: "var(--font-rajdhani)" }}
         >
           Questions & Answers
@@ -347,7 +347,7 @@ function FaqAccordion({ items, title }: { items: PricingFaqItem[]; title?: strin
           initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.08 }}
-          className="text-3xl md:text-4xl font-bold text-white text-center mb-12"
+          className="text-3xl md:text-4xl font-bold text-brand-base text-center mb-12"
           style={{ fontFamily: "var(--font-rajdhani)" }}
         >
           {title ?? "Pricing FAQs"}
@@ -413,7 +413,7 @@ export default function PricingPageClient({
   }
 
   return (
-    <main className="min-h-screen bg-brand-base">
+    <main className="min-h-screen bg-page">
 
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
       <section className="relative pt-40 pb-20 overflow-hidden">
@@ -429,7 +429,7 @@ export default function PricingPageClient({
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-brand-accent text-xs uppercase tracking-widest mb-4"
+            className="text-orange-700 text-xs uppercase tracking-widest mb-4"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             Pricing
@@ -439,13 +439,13 @@ export default function PricingPageClient({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.08 }}
-            className="text-5xl md:text-7xl font-bold text-white mb-6"
+            className="text-5xl md:text-7xl font-bold text-brand-base mb-6"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             <span
               style={{
                 background:
-                  "linear-gradient(90deg, #EF6B4D 0%, #f08060 60%, #f4a080 100%)",
+                  "linear-gradient(90deg, #c2410c 0%, #EF6B4D 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -459,7 +459,7 @@ export default function PricingPageClient({
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.16 }}
-              className="text-white/80 text-xl font-semibold mb-4"
+              className="text-slate-700 text-xl font-semibold mb-4"
               style={{ fontFamily: "var(--font-rajdhani)" }}
             >
               {pricingData.pageSubtitle}
@@ -471,7 +471,7 @@ export default function PricingPageClient({
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.24 }}
-              className="text-slate-400 text-lg leading-relaxed max-w-2xl mx-auto"
+              className="text-slate-600 text-lg leading-relaxed max-w-2xl mx-auto"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
               {pricingData.introText}
@@ -487,7 +487,7 @@ export default function PricingPageClient({
       {hasCards && (
         <section
           ref={sectionRef}
-          className="relative bg-brand-surface py-24 overflow-hidden"
+          className="relative bg-page-alt py-24 overflow-hidden"
         >
           <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
 
@@ -498,7 +498,7 @@ export default function PricingPageClient({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-brand-accent text-xs uppercase tracking-widest text-center mb-3"
+              className="text-orange-700 text-xs uppercase tracking-widest text-center mb-3"
               style={{ fontFamily: "var(--font-rajdhani)" }}
             >
               Service Tiers
@@ -508,7 +508,7 @@ export default function PricingPageClient({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.08 }}
-              className="text-3xl md:text-4xl font-bold text-white text-center mb-16"
+              className="text-3xl md:text-4xl font-bold text-brand-base text-center mb-16"
               style={{ fontFamily: "var(--font-rajdhani)" }}
             >
               Choose Your Service
@@ -550,7 +550,7 @@ export default function PricingPageClient({
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-center text-slate-600 text-xs mt-10"
+              className="text-center text-slate-500 text-xs mt-10"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
               All prices are estimates. Final pricing depends on site conditions and scope. Contact us for an exact quote.
@@ -570,26 +570,26 @@ export default function PricingPageClient({
       )}
 
       {/* ── Bottom CTA + Estimate Form ───────────────────────────────────────── */}
-      <div className={`relative ${hasFaq ? "bg-brand-surface" : "bg-brand-base"} pt-16`}>
+      <div className={`relative ${hasFaq ? "bg-page-alt" : "bg-page"} pt-16`}>
         {hasFaq && (
           <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
         )}
         <div className="max-w-3xl mx-auto px-6 md:px-16 text-center mb-8">
           <p
-            className="text-brand-accent text-xs uppercase tracking-widest mb-3"
+            className="text-orange-700 text-xs uppercase tracking-widest mb-3"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             Ready to Get Started?
           </p>
           <h2
-            className="text-3xl md:text-4xl font-bold text-white"
+            className="text-3xl md:text-4xl font-bold text-brand-base"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             {pricingData?.bottomCtaHeading ?? "Get Your Free Estimate"}
           </h2>
           {pricingData?.bottomCtaText && (
             <p
-              className="text-slate-400 mt-4 text-base leading-relaxed"
+              className="text-slate-600 mt-4 text-base leading-relaxed"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
               {pricingData.bottomCtaText}

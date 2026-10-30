@@ -39,31 +39,31 @@ export function AccordionRow({
 }) {
   if (variant === "pricing") {
     return (
-      <div className="border border-white/5 rounded-sm overflow-hidden">
+      <div className="border border-slate-200 rounded-sm overflow-hidden">
         <button
           onClick={onToggle}
           className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left group hover:bg-brand-accent/5 transition-colors duration-200"
         >
           <div className="flex items-center gap-3 flex-1 min-w-0">
-            <span className="shrink-0 font-mono text-[9px] tracking-widest uppercase text-brand-accent/60 border border-brand-accent/30 px-1.5 py-0.5 rounded-sm">
+            <span className="shrink-0 font-mono text-[9px] tracking-widest uppercase text-orange-700/60 border border-brand-accent/30 px-1.5 py-0.5 rounded-sm">
               Q-{String(index + 1).padStart(2, "0")}
             </span>
             <span
-              className="text-white font-semibold text-sm leading-snug group-hover:text-brand-accent transition-colors duration-200"
+              className="text-brand-base font-semibold text-sm leading-snug group-hover:text-orange-700 transition-colors duration-200"
               style={{ fontFamily: "var(--font-rajdhani)" }}
             >
               {question}
             </span>
           </div>
-          <span className="shrink-0 text-brand-accent/60">
+          <span className="shrink-0 text-orange-700/60">
             {isOpen ? <Minus size={16} /> : <Plus size={16} />}
           </span>
         </button>
 
         {isOpen && (
-          <div className="px-5 pb-5 border-t border-white/5">
+          <div className="px-5 pb-5 border-t border-slate-200">
             <p
-              className="text-slate-400 text-sm leading-relaxed pt-4"
+              className="text-slate-600 text-sm leading-relaxed pt-4"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
               {answer}
@@ -75,13 +75,13 @@ export function AccordionRow({
   }
 
   return (
-    <div className={`border-b ${isLast ? "border-transparent" : "border-white/5"}`}>
+    <div className={`border-b ${isLast ? "border-transparent" : "border-slate-200"}`}>
       <button
         onClick={onToggle}
         className="w-full flex items-center gap-4 py-5 text-left group"
       >
         <span
-          className="font-mono text-[9px] tracking-widest text-brand-accent/60 uppercase shrink-0 hidden sm:block w-8"
+          className="font-mono text-[9px] tracking-widest text-orange-700/60 uppercase shrink-0 hidden sm:block w-8"
           aria-hidden="true"
         >
           Q-{String(index + 1).padStart(2, "0")}
@@ -99,8 +99,8 @@ export function AccordionRow({
         <span
           className={`shrink-0 flex items-center justify-center w-6 h-6 border transition-colors duration-200 ${
             isOpen
-              ? "border-brand-accent/40 text-brand-accent"
-              : "border-white/10 text-text-muted group-hover:border-brand-accent/25 group-hover:text-text-nav"
+              ? "border-brand-accent/40 text-orange-700"
+              : "border-slate-200 text-text-muted group-hover:border-brand-accent/25 group-hover:text-text-nav"
           }`}
           style={{ borderRadius: 0 }}
         >

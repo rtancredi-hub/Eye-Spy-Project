@@ -617,7 +617,7 @@ function MobileScene({
 }
 
 // ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
-export default function CableSeparator({ variant, label, topColor = "#050d1a", bottomColor = "#050d1a" }: CableSeparatorProps) {
+export default function CableSeparator({ variant, label, topColor = "#f6f5f2", bottomColor = "#f6f5f2" }: CableSeparatorProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
   const prefersReducedMotion = useReducedMotion();
@@ -634,7 +634,7 @@ export default function CableSeparator({ variant, label, topColor = "#050d1a", b
   };
 
   return (
-    // bg-brand-base ensures there's no background gap — the separator sits flush
+    // bg-page ensures there's no background gap — the separator sits flush
     // between sections and uses the same dark background.
     <div
       ref={ref}

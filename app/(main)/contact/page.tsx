@@ -36,7 +36,7 @@ export default async function ContactPage() {
     sanityFetch<ContactPageData | null>(contactPageQuery),
   ]);
   return (
-    <Suspense fallback={<div className="min-h-screen bg-brand-base" />}>
+    <Suspense fallback={<div className="min-h-screen bg-page" />}>
       <ContactClient settings={settings} contactData={contactData ?? {}} />
     </Suspense>
   );

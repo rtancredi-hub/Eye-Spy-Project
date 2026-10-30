@@ -51,13 +51,13 @@ export default function ServicePageClient({
     service.longDescription && service.longDescription.length > 0;
 
   return (
-    <main className="min-h-screen bg-brand-base">
+    <main className="min-h-screen bg-page">
       <style>{`
         .service-body h2 {
           font-family: var(--font-rajdhani);
           font-size: 1.75rem;
           font-weight: 700;
-          color: #ffffff;
+          color: #050d1a;
           margin-top: 2.5rem;
           margin-bottom: 1rem;
         }
@@ -65,13 +65,13 @@ export default function ServicePageClient({
           font-family: var(--font-rajdhani);
           font-size: 1.35rem;
           font-weight: 600;
-          color: #e2e8f0;
+          color: #1e293b;
           margin-top: 2rem;
           margin-bottom: 0.75rem;
         }
         .service-body p {
           font-family: var(--font-dm-sans);
-          color: #94a3b8;
+          color: #334155;
           line-height: 1.8;
           margin-bottom: 1.25rem;
         }
@@ -79,13 +79,13 @@ export default function ServicePageClient({
           border-left: 3px solid #EF6B4D;
           padding-left: 1.25rem;
           margin: 1.5rem 0;
-          color: #cbd5e1;
+          color: #334155;
           font-style: italic;
         }
         .service-body ul {
           list-style: disc;
           padding-left: 1.5rem;
-          color: #94a3b8;
+          color: #334155;
           font-family: var(--font-dm-sans);
           line-height: 1.8;
           margin-bottom: 1.25rem;
@@ -93,13 +93,13 @@ export default function ServicePageClient({
         .service-body ol {
           list-style: decimal;
           padding-left: 1.5rem;
-          color: #94a3b8;
+          color: #334155;
           font-family: var(--font-dm-sans);
           line-height: 1.8;
           margin-bottom: 1.25rem;
         }
-        .service-body strong { color: #ffffff; }
-        .service-body em { color: #cbd5e1; }
+        .service-body strong { color: #050d1a; }
+        .service-body em { color: #334155; }
       `}</style>
 
       {/* ── Hero ── */}
@@ -115,14 +115,14 @@ export default function ServicePageClient({
           <div className="flex items-center gap-4 mb-10">
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 text-slate-400 hover:text-white text-sm transition-colors duration-200"
+              className="inline-flex items-center gap-2 text-slate-600 hover:text-brand-base text-sm transition-colors duration-200"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
               <ArrowLeft size={16} /> Back to Services
             </Link>
             <Link
               href="/pricing"
-              className="inline-flex items-center gap-2 text-brand-accent/70 hover:text-brand-accent text-sm transition-colors duration-200"
+              className="inline-flex items-center gap-2 text-orange-700/70 hover:text-orange-700 text-sm transition-colors duration-200"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
               <Tag size={14} /> View Pricing
@@ -144,7 +144,7 @@ export default function ServicePageClient({
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.05 }}
-            className="text-brand-accent text-xs uppercase tracking-widest mb-4"
+            className="text-orange-700 text-xs uppercase tracking-widest mb-4"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             Our Services
@@ -154,13 +154,13 @@ export default function ServicePageClient({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold text-white mb-6"
+            className="text-5xl md:text-7xl font-bold text-brand-base mb-6"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             <span
               style={{
                 background:
-                  "linear-gradient(90deg, #EF6B4D 0%, #f08060 60%, #f4a080 100%)",
+                  "linear-gradient(90deg, #c2410c 0%, #EF6B4D 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -174,7 +174,7 @@ export default function ServicePageClient({
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.18 }}
-              className="text-slate-400 text-lg leading-relaxed max-w-2xl"
+              className="text-slate-600 text-lg leading-relaxed max-w-2xl"
               style={{ fontFamily: "var(--font-dm-sans)" }}
             >
               {service.shortDescription}
@@ -185,7 +185,7 @@ export default function ServicePageClient({
 
       {/* ── Long Description ── */}
       {hasLongDescription && (
-        <section className="relative bg-brand-surface py-16 overflow-hidden">
+        <section className="relative bg-page-alt py-16 overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
           <div className="max-w-3xl mx-auto px-6 md:px-16">
             <div className="service-body">
@@ -198,14 +198,14 @@ export default function ServicePageClient({
 
       {/* ── Image Gallery ── */}
       {hasImages && (
-        <section className="py-20 bg-brand-base">
+        <section className="py-20 bg-page">
           <div className="max-w-6xl mx-auto px-6 md:px-16">
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-brand-accent text-xs uppercase tracking-widest text-center mb-3"
+              className="text-orange-700 text-xs uppercase tracking-widest text-center mb-3"
               style={{ fontFamily: "var(--font-rajdhani)" }}
             >
               Gallery
@@ -215,7 +215,7 @@ export default function ServicePageClient({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.08 }}
-              className="text-3xl md:text-4xl font-bold text-white text-center mb-12"
+              className="text-3xl md:text-4xl font-bold text-brand-base text-center mb-12"
               style={{ fontFamily: "var(--font-rajdhani)" }}
             >
               Our Work
@@ -231,7 +231,7 @@ export default function ServicePageClient({
                 <motion.div
                   key={i}
                   variants={itemVariants}
-                  className="relative aspect-4/3 rounded-sm overflow-hidden border border-white/5"
+                  className="relative aspect-4/3 rounded-sm overflow-hidden border border-slate-200"
                 >
                   <Image
                     src={urlFor(img.asset).width(800).url()}
@@ -249,7 +249,7 @@ export default function ServicePageClient({
 
       {/* ── Features Checklist ── */}
       {hasFeatures && (
-        <section className="relative bg-brand-surface py-20 overflow-hidden">
+        <section className="relative bg-page-alt py-20 overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-brand-accent/15 to-transparent" />
           <div className="max-w-3xl mx-auto px-6 md:px-16">
             <motion.p
@@ -257,7 +257,7 @@ export default function ServicePageClient({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-brand-accent text-xs uppercase tracking-widest text-center mb-3"
+              className="text-orange-700 text-xs uppercase tracking-widest text-center mb-3"
               style={{ fontFamily: "var(--font-rajdhani)" }}
             >
               What&apos;s Included
@@ -267,7 +267,7 @@ export default function ServicePageClient({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.08 }}
-              className="text-3xl md:text-4xl font-bold text-white text-center mb-10"
+              className="text-3xl md:text-4xl font-bold text-brand-base text-center mb-10"
               style={{ fontFamily: "var(--font-rajdhani)" }}
             >
               Key Features
@@ -287,10 +287,10 @@ export default function ServicePageClient({
                 >
                   <CheckCircle
                     size={20}
-                    className="text-brand-accent mt-0.5 shrink-0"
+                    className="text-orange-700 mt-0.5 shrink-0"
                   />
                   <span
-                    className="text-slate-300 text-base leading-relaxed"
+                    className="text-slate-700 text-base leading-relaxed"
                     style={{ fontFamily: "var(--font-dm-sans)" }}
                   >
                     {feature}
@@ -304,16 +304,16 @@ export default function ServicePageClient({
       )}
 
       {/* ── Estimate Form ── */}
-      <div className="bg-brand-base pt-12">
+      <div className="bg-page pt-12">
         <div className="max-w-3xl mx-auto px-6 md:px-16 text-center mb-0">
           <p
-            className="text-brand-accent text-xs uppercase tracking-widest mb-3"
+            className="text-orange-700 text-xs uppercase tracking-widest mb-3"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             Ready to Get Started?
           </p>
           <h2
-            className="text-3xl md:text-4xl font-bold text-white"
+            className="text-3xl md:text-4xl font-bold text-brand-base"
             style={{ fontFamily: "var(--font-rajdhani)" }}
           >
             Get a Quote for {service.title}
